@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:text="Hello hoangquynh2000 "
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/ava"
+        android:layout_width="57dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ava"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tv_categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="25dp"
+        android:text="Categories"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hello"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tv_recipes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Popular Recipes"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cake"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/btn_cake"
+        android:layout_width="90dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_cakedrinkfood"
+        app:layout_constraintEnd_toStartOf="@+id/btn_drink"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_categories"
+        app:srcCompat="@drawable/cake"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/btn_drink"
+        android:layout_width="90dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/btn_cakedrinkfood"
+        app:layout_constraintBottom_toTopOf="@+id/tv_recipes"
+        app:layout_constraintEnd_toStartOf="@+id/btn_food"
+        app:layout_constraintStart_toEndOf="@+id/btn_cake"
+        app:srcCompat="@drawable/drink"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/btn_food"
+        android:layout_width="90dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_cakedrinkfood"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_drink"
+        app:layout_constraintTop_toBottomOf="@+id/ava"
+        app:srcCompat="@drawable/food"
+        tools:ignore="MissingConstraints" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="373dp"
+        android:layout_height="360dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="9dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_recipes"
+        tools:ignore="MissingConstraints,ScrollViewCount">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="51dp"
+                tools:layout_editor_absoluteY="447dp">
+
+                <ImageButton
+                    android:id="@+id/freshorangecake"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/freshorangecake"
+                    tools:layout_editor_absoluteX="201dp"
+                    tools:layout_editor_absoluteY="471dp" />
+
+                <ImageButton
+                    android:id="@+id/chocolatecake"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/chocolatecake"
+                    tools:layout_editor_absoluteX="201dp"
+                    tools:layout_editor_absoluteY="471dp" />
+
+                <ImageButton
+                    android:id="@+id/chickensalad"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/chickensalad"
+                    tools:layout_editor_absoluteX="201dp"
+                    tools:layout_editor_absoluteY="471dp" />
+
+                <ImageButton
+                    android:id="@+id/peachtea"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/peachtea"
+                    tools:layout_editor_absoluteX="201dp"
+                    tools:layout_editor_absoluteY="471dp" />
+
+                <ImageButton
+                    android:id="@+id/nakedchoco"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/nakedchoco"
+                    tools:layout_editor_absoluteX="201dp"
+                    tools:layout_editor_absoluteY="471dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="51dp"
+                tools:layout_editor_absoluteY="447dp">
+
+                <ImageButton
+                    android:id="@+id/mojitodeepblue"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/mojitodeepblue"
+                    tools:layout_editor_absoluteX="201dp"
+                    tools:layout_editor_absoluteY="471dp" />
+
+                <ImageButton
+                    android:id="@+id/muffin"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/muffin"
+                    tools:layout_editor_absoluteX="201dp"
+                    tools:layout_editor_absoluteY="471dp" />
+
+                <ImageButton
+                    android:id="@+id/sandwich"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/sandwich"
+                    tools:layout_editor_absoluteX="201dp"
+                    tools:layout_editor_absoluteY="471dp" />
+
+                <ImageButton
+                    android:id="@+id/mojitolime"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/mojitolime"
+                    tools:layout_editor_absoluteX="201dp"
+                    tools:layout_editor_absoluteY="471dp" />
+
+                <ImageButton
+                    android:id="@+id/pancake"
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/pancake"
+                    tools:layout_editor_absoluteX="201dp"
+                    tools:layout_editor_absoluteY="471dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_nav"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
