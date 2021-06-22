@@ -36,6 +36,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="7dp"
         android:text="4.7"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/imageView19"
         app:layout_constraintTop_toBottomOf="@+id/tv_cake"
@@ -48,6 +49,7 @@
         android:layout_marginTop="192dp"
         android:layout_marginEnd="84dp"
         android:text="345 Reviews"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -62,6 +64,7 @@
         android:layout_marginStart="43dp"
         android:layout_marginTop="6dp"
         android:text="45 mins |"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_cake"
@@ -77,6 +80,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="37dp"
         android:text="Ingredients"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView27"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,6 +113,7 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="56dp"
         android:text="Review"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView25"
@@ -184,6 +189,7 @@
         android:layout_marginStart="65dp"
         android:layout_marginTop="9dp"
         android:text="100 cal"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_cal"
@@ -198,6 +204,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="59dp"
         android:text="2 potion"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView25"
         app:layout_constraintHorizontal_bias="0.0"
@@ -212,6 +219,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="59dp"
         android:text="Medium"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_easy"
@@ -258,6 +266,7 @@
                     android:layout_marginStart="14dp"
                     android:layout_marginTop="20dp"
                     android:text="  4 - 5 peach slides"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     tools:ignore="MissingConstraints" />
             </RelativeLayout>
@@ -284,6 +293,7 @@
                     android:layout_alignLeft="@+id/c2"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
+                    android:fontFamily="@font/poppinslight"
                     android:text="  15ml syrup peach"
                     android:textSize="14sp"
                     tools:ignore="MissingConstraints" />
@@ -312,6 +322,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:text="  200ml hot water"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     tools:ignore="MissingConstraints" />
             </RelativeLayout>
@@ -337,6 +348,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:text="  20ml sugar water"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:ignore="MissingConstraints" />
@@ -363,6 +375,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:text="  20ml lemon juice"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:ignore="MissingConstraints" />
@@ -389,6 +402,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:text="  100gr sugar"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:ignore="MissingConstraints" />
@@ -415,6 +429,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:text="  1 pack of peach tea bags Cozy"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:ignore="MissingConstraints" />
@@ -431,6 +446,7 @@
         android:layout_marginBottom="42dp"
         android:background="@drawable/btn_watch"
         android:text="Watch Tutorial"
+        android:fontFamily="@font/poppinssemibold"
         android:textColor="#000000"
         app:backgroundTint="#FC9801"
         app:layout_constraintBottom_toBottomOf="parent"

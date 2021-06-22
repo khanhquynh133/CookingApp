@@ -19,17 +19,16 @@
         <activity android:name=".Login"/>
         <activity android:name=".Register"/>
         <activity android:name=".SearchPage"/>
+        <activity android:name=".HomePage"/>
+        <activity android:name=".Infor"/>
         <activity android:name=".Added"/>
         <activity android:name=".AddRecipe"/>
-        <activity android:name=".FreshOrangeCake"/>
         <activity android:name=".Cake"/>
         <activity android:name=".Drink"/>
         <activity android:name=".Food"/>
-        <activity android:name=".HomePage"/>
-        <activity android:name=".Infor"/>
+        <activity android:name=".FreshOrangeCake"/>
         <activity android:name=".PeachTea"/>
         <activity android:name=".Spaghetti"/>
-
     </application>
 
 </manifest>

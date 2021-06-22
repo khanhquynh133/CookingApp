@@ -35,6 +35,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="7dp"
         android:text="4.7   |"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/imageView19"
         app:layout_constraintTop_toBottomOf="@+id/tv_cake"
@@ -47,6 +48,7 @@
         android:layout_marginTop="192dp"
         android:layout_marginEnd="84dp"
         android:text="345 Reviews"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -61,6 +63,7 @@
         android:layout_marginStart="43dp"
         android:layout_marginTop="6dp"
         android:text="130 mins |"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_cake"
@@ -76,6 +79,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="37dp"
         android:text="Ingredients"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView27"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,6 +100,7 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="49dp"
         android:text="Preparation"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView28"
         app:layout_constraintTop_toBottomOf="@+id/textView24"
@@ -108,6 +113,7 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="56dp"
         android:text="Review"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView25"
@@ -132,6 +138,7 @@
         android:layout_marginTop="156dp"
         android:layout_marginEnd="183dp"
         android:text="Spagetti with seafood"
+        android:fontFamily="@font/poppinssemibold"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -184,6 +191,7 @@
         android:layout_marginStart="65dp"
         android:layout_marginTop="9dp"
         android:text="650 cal"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_cal"
@@ -197,6 +205,7 @@
         android:layout_marginTop="9dp"
         android:layout_marginEnd="59dp"
         android:text="4 potion"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView25"
         app:layout_constraintStart_toEndOf="@+id/textView23"
@@ -210,6 +219,7 @@
         android:layout_marginTop="9dp"
         android:layout_marginEnd="74dp"
         android:text="Easy"
+        android:fontFamily="@font/poppinslight"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_easy"
@@ -257,6 +267,7 @@
                     android:layout_marginStart="14dp"
                     android:layout_marginTop="20dp"
                     android:text="  12 ounces spaghetti"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     tools:ignore="MissingConstraints" />
             </RelativeLayout>
@@ -284,6 +295,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:text="  1/2 pound shrimp"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     tools:ignore="MissingConstraints" />
             </RelativeLayout>
@@ -311,6 +323,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:text="  1/2 pound sea scallops"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     tools:ignore="MissingConstraints" />
             </RelativeLayout>
@@ -336,6 +349,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:text="  2 teaspoons garlic"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:ignore="MissingConstraints" />
@@ -362,6 +376,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:text="  1/2 cup onion"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:ignore="MissingConstraints" />
@@ -388,6 +403,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:text="  3 tablespoons olive oil"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:ignore="MissingConstraints" />
@@ -441,6 +457,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:text="  2 tablespoons parsley"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:ignore="MissingConstraints" />
@@ -467,6 +484,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:text="  salt and pepper to taste"
+                    android:fontFamily="@font/poppinslight"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:ignore="MissingConstraints" />
@@ -486,6 +504,7 @@
         android:layout_marginBottom="40dp"
         android:background="@drawable/btn_watch"
         android:text="Watch Tutorial"
+        android:fontFamily="@font/poppinssemibold"
         android:textColor="#000000"
         app:backgroundTint="#FC9801"
         app:layout_constraintBottom_toBottomOf="parent"
