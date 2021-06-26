@@ -27,7 +27,7 @@ public class AddFood extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(AddFood.this,AddedFood.class));
+                startActivity(new Intent(AddFood.this,Food.class));
             }
         });
     }

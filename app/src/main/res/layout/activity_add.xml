@@ -138,7 +138,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/btn_addfood"
+        android:id="@+id/btn_adddrink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
@@ -148,12 +148,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toEndOf="@+id/tv_categories6"
-        app:layout_constraintTop_toBottomOf="@+id/btn_adddrink"
+        app:layout_constraintTop_toBottomOf="@+id/btn_addfood"
         app:srcCompat="@drawable/addicon"
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/btn_adddrink"
+        android:id="@+id/btn_addfood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"

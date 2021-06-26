@@ -25,6 +25,9 @@
         <activity android:name=".AddCake"/>
         <activity android:name=".AddFood"/>
         <activity android:name=".AddDrink"/>
+        <activity android:name=".AddedCake"/>
+        <activity android:name=".AddedFood"/>
+        <activity android:name=".AddedDrink"/>
         <activity android:name=".Add"/>
         <activity android:name=".Cake"/>
         <activity android:name=".Drink"/>

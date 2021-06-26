@@ -27,7 +27,7 @@ public class AddCake extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(AddCake.this,AddedCake.class));
+                startActivity(new Intent(AddCake.this,Cake.class));
             }
         });
     }
