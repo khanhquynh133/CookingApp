@@ -21,8 +21,11 @@
         <activity android:name=".SearchPage"/>
         <activity android:name=".HomePage"/>
         <activity android:name=".Infor"/>
-        <activity android:name=".Added"/>
-        <activity android:name=".AddRecipe"/>
+        <activity android:name=".Fav"/>
+        <activity android:name=".AddCake"/>
+        <activity android:name=".AddFood"/>
+        <activity android:name=".AddDrink"/>
+        <activity android:name=".Add"/>
         <activity android:name=".Cake"/>
         <activity android:name=".Drink"/>
         <activity android:name=".Food"/>

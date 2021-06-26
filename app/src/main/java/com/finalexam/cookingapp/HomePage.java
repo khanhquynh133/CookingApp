@@ -67,7 +67,11 @@ public class HomePage extends AppCompatActivity {
                     case R.id.home:
                         return true;
                     case R.id.add:
-                        startActivity(new Intent(getApplicationContext(), Added.class));
+                        startActivity(new Intent(getApplicationContext(), Add.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.fav:
+                        startActivity(new Intent(getApplicationContext(), Fav.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.search:
