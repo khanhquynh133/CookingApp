@@ -27,13 +27,14 @@ public class Login extends AppCompatActivity {
             }
         });
         login = findViewById(R.id.btn_loginL);
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 email = findViewById(R.id.etemailL);
                 password = findViewById(R.id.etpassL);
 
-                NetworkProvider.self().login(email.getText().toString(), password.getText().toString());
+                NetworkProvider.self().login(email.getText().toString(), password.getText().toString(), Login.this);
 //                startActivity(new Intent(Login.this,HomePage.class));
             }
         });

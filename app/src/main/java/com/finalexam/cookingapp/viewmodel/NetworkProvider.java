@@ -1,5 +1,8 @@
 package com.finalexam.cookingapp.viewmodel;
 
+import android.app.Activity;
+import android.widget.Toast;
+
 import com.finalexam.cookingapp.model.APIError;
 import com.finalexam.cookingapp.model.LoginResponse;
 import com.finalexam.cookingapp.model.SignUpRequest;
@@ -7,7 +10,11 @@ import com.finalexam.cookingapp.model.SignUpResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,6 +32,27 @@ public final class NetworkProvider {
                 .client(new OkHttpClient.Builder().build())
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
                 .build();
+    }
+
+    private String getErrorMessage(ResponseBody errorBody) {
+        StringBuilder error = new StringBuilder();
+        try {
+            BufferedReader bufferedReader = null;
+            if (errorBody != null) {
+                bufferedReader = new BufferedReader(new InputStreamReader(
+                        errorBody.byteStream()));
+
+                String eLine = null;
+                while ((eLine = bufferedReader.readLine()) != null) {
+                    error.append(eLine);
+                }
+                bufferedReader.close();
+            }
+
+        } catch (Exception e) {
+            error.append(e.getMessage());
+        }
+        return error.toString();
     }
 
     public static NetworkProvider self() {
@@ -47,17 +75,16 @@ public final class NetworkProvider {
         });
     }
 
-    public void login(String email, String password) {
+    public void login(String email, String password, Activity loginActivity) {
         retrofit.create(APIService.class).login(email, password).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful()) {
                     System.out.println(response.body().getId());
                 } else {
-                    System.out.println(response.errorBody().charStream());
-//                    APIError message = new Gson().fromJson(response.errorBody().charStream(), APIError.class);
-//                    System.out.println(message.getMessage());
-//                    Toast.makeText(MainActivity.this, "" + message.getMessage(), Toast.LENGTH_SHORT).show();
+                    String errorMessage = getErrorMessage(response.errorBody());
+                    System.out.println(errorMessage);
+                    Toast.makeText(loginActivity.getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
                 }
             }
 
