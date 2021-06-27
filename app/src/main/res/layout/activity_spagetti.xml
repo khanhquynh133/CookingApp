@@ -232,7 +232,7 @@
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="85dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btn_savecake"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView27"
@@ -498,7 +498,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_savecake"
         android:layout_width="174dp"
         android:layout_height="36dp"
         android:layout_marginBottom="40dp"
