@@ -1,4 +1,4 @@
-package com.finalexam.cookingapp;
+package com.finalexam.cookingapp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,17 +7,18 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AddRecipe extends AppCompatActivity {
+import com.finalexam.cookingapp.R;
+
+public class PeachTea extends AppCompatActivity {
     ImageButton back;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addrecipe);
-        back = findViewById(R.id.btn_backaddcake);
+        setContentView(R.layout.activity_peachtea);
+        back = findViewById(R.id.btn_backPT);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                startActivity(new Intent(AddRecipe.this,Added.class));
+                startActivity(new Intent(PeachTea.this,Drink.class));
             }
         });
     }

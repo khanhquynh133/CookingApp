@@ -1,12 +1,14 @@
-package com.finalexam.cookingapp;
+package com.finalexam.cookingapp.view;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Favorite extends AppCompatActivity {
+import com.finalexam.cookingapp.R;
+
+public class AddedDrink extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorite);
+        setContentView(R.layout.activity_adddrink);
     }
 }

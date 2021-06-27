@@ -1,4 +1,4 @@
-package com.finalexam.cookingapp;
+package com.finalexam.cookingapp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.finalexam.cookingapp.R;
 
 public class Infor extends AppCompatActivity {
     ImageButton back;

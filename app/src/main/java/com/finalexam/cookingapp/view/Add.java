@@ -1,4 +1,4 @@
-package com.finalexam.cookingapp;
+package com.finalexam.cookingapp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,10 @@ import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.finalexam.cookingapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Added extends AppCompatActivity {
+public class Add extends AppCompatActivity {
     ImageButton addcake,addfood,adddrink;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,21 +21,21 @@ public class Added extends AppCompatActivity {
         addcake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Added.this,AddRecipe.class));
+                startActivity(new Intent(Add.this,AddCake.class));
             }
         });
         addfood = findViewById(R.id.btn_addfood);
         addfood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Added.this,AddRecipe.class));
+                startActivity(new Intent(Add.this,AddFood.class));
             }
         });
         adddrink = findViewById(R.id.btn_adddrink);
         adddrink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Added.this,AddRecipe.class));
+                startActivity(new Intent(Add.this,AddDrink.class));
             }
         });
         BottomNavigationView nav = findViewById(R.id.bottomnav);
@@ -51,6 +52,10 @@ public class Added extends AppCompatActivity {
                         return true;
                     case R.id.search:
                         startActivity(new Intent(getApplicationContext(), SearchPage.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.fav:
+                        startActivity(new Intent(getApplicationContext(), Fav.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.out:

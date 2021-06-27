@@ -1,4 +1,4 @@
-package com.finalexam.cookingapp;
+package com.finalexam.cookingapp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 
 public class Login extends AppCompatActivity {

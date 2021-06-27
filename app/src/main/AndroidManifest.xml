@@ -11,32 +11,32 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.CookingApp">
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login"/>
-        <activity android:name=".Register"/>
-        <activity android:name=".SearchPage"/>
-        <activity android:name=".HomePage"/>
-        <activity android:name=".Infor"/>
-        <activity android:name=".Fav"/>
-        <activity android:name=".AddCake"/>
-        <activity android:name=".AddFood"/>
-        <activity android:name=".AddDrink"/>
-        <activity android:name=".AddedCake"/>
-        <activity android:name=".AddedFood"/>
-        <activity android:name=".AddedDrink"/>
-        <activity android:name=".Add"/>
-        <activity android:name=".Cake"/>
-        <activity android:name=".Drink"/>
-        <activity android:name=".Food"/>
-        <activity android:name=".FreshOrangeCake"/>
-        <activity android:name=".PeachTea"/>
-        <activity android:name=".Spaghetti"/>
+        <activity android:name=".view.Login"/>
+        <activity android:name=".view.Register"/>
+        <activity android:name=".view.SearchPage"/>
+        <activity android:name=".view.HomePage"/>
+        <activity android:name=".view.Infor"/>
+        <activity android:name=".view.Fav"/>
+        <activity android:name=".view.AddCake"/>
+        <activity android:name=".view.AddFood"/>
+        <activity android:name=".view.AddDrink"/>
+        <activity android:name=".view.AddedCake"/>
+        <activity android:name=".view.AddedFood"/>
+        <activity android:name=".view.AddedDrink"/>
+        <activity android:name=".view.Add"/>
+        <activity android:name=".view.Cake"/>
+        <activity android:name=".view.Drink"/>
+        <activity android:name=".view.Food"/>
+        <activity android:name=".view.FreshOrangeCake"/>
+        <activity android:name=".view.PeachTea"/>
+        <activity android:name=".view.Spaghetti"/>
     </application>
 
 </manifest>

@@ -1,13 +1,13 @@
 package com.finalexam.cookingapp.viewmodel;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.widget.Toast;
 
-import com.finalexam.cookingapp.model.APIError;
+import com.finalexam.cookingapp.view.HomePage;
 import com.finalexam.cookingapp.model.LoginResponse;
 import com.finalexam.cookingapp.model.SignUpRequest;
 import com.finalexam.cookingapp.model.SignUpResponse;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
@@ -81,6 +81,7 @@ public final class NetworkProvider {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful()) {
                     System.out.println(response.body().getId());
+                    loginActivity.startActivity(new Intent(loginActivity, HomePage.class));
                 } else {
                     String errorMessage = getErrorMessage(response.errorBody());
                     System.out.println(errorMessage);
