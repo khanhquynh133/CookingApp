@@ -10,15 +10,19 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.finalexam.cookingapp.R;
+import com.finalexam.cookingapp.database.DatabaseHandler;
 import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 
 public class Login extends AppCompatActivity {
     TextView register;
     Button login;
     EditText email, password;
+    DatabaseHandler databaseHandler;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseHandler = new DatabaseHandler(getApplicationContext());
+
         setContentView(R.layout.activity_login);
         register = findViewById(R.id.tv_register);
         register.setOnClickListener(new View.OnClickListener() {

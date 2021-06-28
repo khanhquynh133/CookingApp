@@ -8,12 +8,22 @@ import android.view.View;
 import android.widget.Button;
 
 import com.finalexam.cookingapp.R;
+import com.finalexam.cookingapp.database.DatabaseHandler;
+import com.finalexam.cookingapp.model.User;
 
 public class MainActivity extends AppCompatActivity {
     Button login,register;
+    DatabaseHandler databaseHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseHandler = new DatabaseHandler(getApplicationContext());
+
+        User user = databaseHandler.getCurrentAccount();
+        if (user != null)
+            startActivity(new Intent(MainActivity.this, HomePage.class));
+
         setContentView(R.layout.activity_main);
         login = findViewById(R.id.btn_login);
         register = findViewById(R.id.btn_registerR);
