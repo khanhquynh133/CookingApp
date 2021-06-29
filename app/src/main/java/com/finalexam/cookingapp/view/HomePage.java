@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
 import com.finalexam.cookingapp.model.User;
+import com.finalexam.cookingapp.view.menu.Nav;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomePage extends AppCompatActivity {
@@ -72,35 +73,6 @@ public class HomePage extends AppCompatActivity {
                 startActivity(new Intent(HomePage.this,PeachTea.class));
             }
         });
-        BottomNavigationView nav = findViewById(R.id.bottomnav);
-        nav.setSelectedItemId(R.id.home);
-        nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.home:
-                        return true;
-                    case R.id.add:
-                        startActivity(new Intent(getApplicationContext(), Add.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.fav:
-                        startActivity(new Intent(getApplicationContext(), Fav.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.search:
-                        startActivity(new Intent(getApplicationContext(), SearchPage.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.out:
-                        startActivity(new Intent(getApplicationContext(), Login.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                }
-
-                return false;
-            }
-        });
-
+        Nav nav = new Nav(HomePage.this);
     }
 }

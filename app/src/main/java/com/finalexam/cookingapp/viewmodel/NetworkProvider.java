@@ -88,7 +88,7 @@ public final class NetworkProvider {
                     user.setCurrentAccount(1);
                     databaseHandler.addUser(user);
 
-//                    loginActivity.startActivity(new Intent(loginActivity, HomePage.class));
+                    loginActivity.startActivity(new Intent(loginActivity, HomePage.class));
                 } else {
                     String errorMessage = getErrorMessage(response.errorBody());
                     System.out.println(errorMessage);

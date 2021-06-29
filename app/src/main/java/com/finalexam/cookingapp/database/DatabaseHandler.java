@@ -49,7 +49,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(USER_COLUMN_CURRENT_ACCOUNT, user.getCurrentAccount());
 
         db.insert(USER_TABLE_NAME, null, values);
-//        db.close();
     }
 
     public User getCurrentAccount() {
@@ -67,5 +66,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         catch (CursorIndexOutOfBoundsException ex) {
             return null;
         }
+    }
+
+    public void logout() {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String deleteQuery = "DELETE FROM " + USER_TABLE_NAME + " WHERE " + USER_COLUMN_CURRENT_ACCOUNT + "=1;";
+        db.execSQL(deleteQuery);
     }
 }
