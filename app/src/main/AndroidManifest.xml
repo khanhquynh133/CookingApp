@@ -35,6 +35,8 @@
         <activity android:name=".FreshOrangeCake"/>
         <activity android:name=".PeachTea"/>
         <activity android:name=".Spaghetti"/>
+        <activity android:name=".RememberLogin"/>
+        <activity android:name=".Account"/>
     </application>
 
 </manifest>
