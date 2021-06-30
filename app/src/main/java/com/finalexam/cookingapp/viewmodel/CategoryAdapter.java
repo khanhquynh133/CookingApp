@@ -1,5 +1,6 @@
 package com.finalexam.cookingapp.viewmodel;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.model.Category;
+import com.finalexam.cookingapp.view.AddRecipe;
 
 import java.util.List;
 
@@ -50,6 +52,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
         private CircleImageView ibLogo;
+        private ImageButton ibAdd;
         private TextView tvCategoryName;
         private String categoryName;
 
@@ -57,6 +60,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             super(itemView);
             ibLogo = itemView.findViewById(R.id.ib_logo);
             tvCategoryName = itemView.findViewById(R.id.tv_category_name);
+            ibAdd = itemView.findViewById(R.id.ib_add);
+
+            ibAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), AddRecipe.class);
+                    intent.putExtra("categoryName", categoryName);
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }

@@ -30,6 +30,7 @@
         <activity android:name=".view.AddedCake"/>
         <activity android:name=".view.AddedFood"/>
         <activity android:name=".view.AddedDrink"/>
+        <activity android:name=".view.AddRecipe"/>
         <activity android:name=".view.Add"/>
         <activity android:name=".view.Cake"/>
         <activity android:name=".view.Drink"/>
