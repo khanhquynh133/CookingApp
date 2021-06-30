@@ -4,8 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
+import com.finalexam.cookingapp.model.Category;
 import com.finalexam.cookingapp.model.User;
+import com.finalexam.cookingapp.view.Add;
 import com.finalexam.cookingapp.view.HomePage;
 import com.finalexam.cookingapp.model.LoginResponse;
 import com.finalexam.cookingapp.model.SignUpRequest;
@@ -14,6 +20,8 @@ import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
@@ -99,6 +107,29 @@ public final class NetworkProvider {
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 t.printStackTrace();
+            }
+        });
+    }
+
+    public void getAllCategories(Activity activity) {
+        retrofit.create(APIService.class).getAllCategories().enqueue(new Callback<List<Category>>() {
+            @Override
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                List<Category> categories = response.body();
+                DatabaseHandler databaseHandler = new DatabaseHandler(activity.getApplicationContext());
+
+                for (Category category : categories) {
+                    if (databaseHandler.getCategory(category.getId()) != null) continue;
+                    databaseHandler.addCategory(category);
+                }
+
+                activity.startActivity(new Intent(activity.getApplicationContext(), Add.class));
+                activity.overridePendingTransition(0, 0);
+            }
+
+            @Override
+            public void onFailure(Call<List<Category>> call, Throwable t) {
+
             }
         });
     }

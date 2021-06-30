@@ -9,9 +9,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.finalexam.cookingapp.model.Category;
 import com.finalexam.cookingapp.model.User;
+import com.finalexam.cookingapp.viewmodel.NetworkProvider;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
+
     private static final String DATABASE_NAME = "mobile";
     private static final int DATABASE_VERSION = 3;
 
@@ -21,6 +27,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String USER_COLUMN_EMAIL = "email";
     private static final String USER_COLUMN_CURRENT_ACCOUNT = "current_account";
 
+    private static final String CATEGORY_TABLE_NAME = "category";
+    private static final String CATEGORY_COLUMN_ID = "id";
+    private static final String CATEGORY_COLUMN_IMAGE_ID = "image_id";
+    private static final String CATEGORY_COLUMN_NAME = "name";
+
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -28,13 +39,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createUserTableCommand = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT, %s INTEGER)", USER_TABLE_NAME, USER_COLUMN_ID, USER_COLUMN_FULL_NAME, USER_COLUMN_EMAIL, USER_COLUMN_CURRENT_ACCOUNT);
+        String createCategoryTableCommand = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT)", CATEGORY_TABLE_NAME, CATEGORY_COLUMN_ID, CATEGORY_COLUMN_IMAGE_ID, CATEGORY_COLUMN_NAME);
+        db.execSQL(createCategoryTableCommand);
         db.execSQL(createUserTableCommand);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String drop_students_table = String.format("DROP TABLE IF EXISTS %s", USER_TABLE_NAME);
-        db.execSQL(drop_students_table);
+        String dropUserTable = String.format("DROP TABLE IF EXISTS %s", USER_TABLE_NAME);
+        String dropCategoryTable = String.format("DROP TABLE IF EXISTS %s", CATEGORY_TABLE_NAME);
+        db.execSQL(dropUserTable);
+        db.execSQL(dropCategoryTable);
 
         onCreate(db);
     }
@@ -55,15 +70,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         try {
-            Cursor cursor = db.query(USER_TABLE_NAME, null, USER_COLUMN_CURRENT_ACCOUNT + " = ?", new String[] {String.valueOf(1)},null, null, null);
+            Cursor cursor = db.query(USER_TABLE_NAME, null, USER_COLUMN_CURRENT_ACCOUNT + " = ?", new String[]{String.valueOf(1)}, null, null, null);
 
             if (cursor != null)
                 cursor.moveToFirst();
 
             User user = new User(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3));
             return user;
-        }
-        catch (CursorIndexOutOfBoundsException ex) {
+        } catch (CursorIndexOutOfBoundsException ex) {
             return null;
         }
     }
@@ -73,5 +87,58 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         String deleteQuery = "DELETE FROM " + USER_TABLE_NAME + " WHERE " + USER_COLUMN_CURRENT_ACCOUNT + "=1;";
         db.execSQL(deleteQuery);
+    }
+
+    public void addCategory(Category category) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(CATEGORY_COLUMN_ID, category.getId());
+        values.put(CATEGORY_COLUMN_IMAGE_ID, category.getImageID());
+        values.put(CATEGORY_COLUMN_NAME, category.getCategoryName());
+
+        db.insert(CATEGORY_TABLE_NAME, null, values);
+    }
+
+    public List<Category> getAllCategories() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        List<Category> categories = new ArrayList<>();
+        try {
+            String getAllCategoriesCommand = "SELECT * FROM " + CATEGORY_TABLE_NAME;
+            Cursor cursor = db.rawQuery(getAllCategoriesCommand, null);
+
+
+            if (cursor.moveToFirst()) {
+                while(!cursor.isAfterLast()) {
+                    Category category = new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
+                    categories.add(category);
+
+                    cursor.moveToNext();
+                }
+            }
+            System.out.println(categories.size());
+
+            return categories;
+
+        } catch (CursorIndexOutOfBoundsException ex) {
+        }
+        return categories;
+    }
+
+    public Category getCategory(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        try {
+            Cursor cursor = db.query(CATEGORY_TABLE_NAME, null, CATEGORY_COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
+
+            if (cursor != null)
+                cursor.moveToFirst();
+
+            Category category = new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
+            return category;
+        } catch (CursorIndexOutOfBoundsException ex) {
+            return null;
+        }
     }
 }

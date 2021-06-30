@@ -2,19 +2,16 @@ package com.finalexam.cookingapp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
 import com.finalexam.cookingapp.model.User;
 import com.finalexam.cookingapp.view.menu.Nav;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomePage extends AppCompatActivity {
     ImageButton cake,food,drink,cakeFOC,drinkPT,ava;

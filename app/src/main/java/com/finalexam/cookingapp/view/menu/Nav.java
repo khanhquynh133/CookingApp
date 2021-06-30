@@ -9,10 +9,12 @@ import androidx.annotation.NonNull;
 import com.finalexam.cookingapp.R;
 
 import com.finalexam.cookingapp.database.DatabaseHandler;
+import com.finalexam.cookingapp.view.Add;
 import com.finalexam.cookingapp.view.Fav;
 import com.finalexam.cookingapp.view.HomePage;
 import com.finalexam.cookingapp.view.Login;
 import com.finalexam.cookingapp.view.SearchPage;
+import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public final class Nav {
@@ -32,6 +34,7 @@ public final class Nav {
                         activity.overridePendingTransition(0, 0);
                         return true;
                     case R.id.add:
+                        NetworkProvider.self().getAllCategories(activity);
                         return true;
                     case R.id.search:
                         activity.startActivity(new Intent(activity.getApplicationContext(), SearchPage.class));

@@ -17,27 +17,27 @@ public class Added extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        addcake = findViewById(R.id.btn_addcake);
-        addcake.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Added.this,AddRecipe.class));
-            }
-        });
-        addfood = findViewById(R.id.btn_addfood);
-        addfood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Added.this,AddRecipe.class));
-            }
-        });
-        adddrink = findViewById(R.id.btn_adddrink);
-        adddrink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Added.this,AddRecipe.class));
-            }
-        });
+//        addcake = findViewById(R.id.btn_addcake);
+//        addcake.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(Added.this,AddRecipe.class));
+//            }
+//        });
+//        addfood = findViewById(R.id.btn_addfood);
+//        addfood.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(Added.this,AddRecipe.class));
+//            }
+//        });
+//        adddrink = findViewById(R.id.btn_adddrink);
+//        adddrink.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(Added.this,AddRecipe.class));
+//            }
+//        });
         BottomNavigationView nav = findViewById(R.id.bottomnav);
         nav.setSelectedItemId(R.id.home);
         nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
