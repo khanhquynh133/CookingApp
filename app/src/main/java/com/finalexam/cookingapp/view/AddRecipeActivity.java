@@ -7,18 +7,32 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.finalexam.cookingapp.R;
+import com.finalexam.cookingapp.viewmodel.ViewPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
 
-public class AddRecipe extends AppCompatActivity {
+public class AddRecipeActivity extends AppCompatActivity {
     ImageButton back;
     TextView tvCategoryTitle;
+    TabLayout tlAddRecipe;
+    ViewPager vpAddRecipe;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String categoryName = getIntent().getStringExtra("categoryName");
 
         setContentView(R.layout.activity_addrecipe);
+
+        tlAddRecipe = findViewById(R.id.tl_add_recipe);
+        vpAddRecipe = findViewById(R.id.vp_add_recipe);
+
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        vpAddRecipe.setAdapter(viewPagerAdapter);
+
+        tlAddRecipe.setupWithViewPager(vpAddRecipe);
 
         tvCategoryTitle = findViewById(R.id.tv_categories7);
         tvCategoryTitle.setText(categoryName);
@@ -27,7 +41,7 @@ public class AddRecipe extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(AddRecipe.this,Added.class));
+                startActivity(new Intent(AddRecipeActivity.this,Added.class));
             }
         });
     }

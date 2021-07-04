@@ -1,5 +1,7 @@
 package com.finalexam.cookingapp.model;
 
+import com.finalexam.cookingapp.model.response.LoginResponse;
+
 public class User {
     private int id;
     private String fullName;

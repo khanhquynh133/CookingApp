@@ -21,11 +21,11 @@ public class Fav extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), HomePage.class));
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.add:
-                        startActivity(new Intent(getApplicationContext(), Add.class));
+                        startActivity(new Intent(getApplicationContext(), AddActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.search:
@@ -35,7 +35,7 @@ public class Fav extends AppCompatActivity {
                     case R.id.fav:
                         return true;
                     case R.id.out:
-                        startActivity(new Intent(getApplicationContext(), Login.class));
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                 }

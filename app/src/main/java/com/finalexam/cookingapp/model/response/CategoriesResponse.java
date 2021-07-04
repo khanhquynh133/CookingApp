@@ -1,4 +1,6 @@
-package com.finalexam.cookingapp.model;
+package com.finalexam.cookingapp.model.response;
+
+import com.finalexam.cookingapp.model.Category;
 
 import java.util.List;
 

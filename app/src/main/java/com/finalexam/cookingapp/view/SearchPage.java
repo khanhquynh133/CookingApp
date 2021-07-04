@@ -48,7 +48,7 @@ public class SearchPage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), HomePage.class));
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.add:
@@ -58,7 +58,7 @@ public class SearchPage extends AppCompatActivity {
                     case R.id.search:
                         return true;
                     case R.id.out:
-                        startActivity(new Intent(getApplicationContext(), Login.class));
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                 }

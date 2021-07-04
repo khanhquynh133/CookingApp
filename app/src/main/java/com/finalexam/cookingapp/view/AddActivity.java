@@ -1,9 +1,6 @@
 package com.finalexam.cookingapp.view;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,16 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
-import com.finalexam.cookingapp.model.Category;
 import com.finalexam.cookingapp.model.User;
 import com.finalexam.cookingapp.view.menu.Nav;
 import com.finalexam.cookingapp.viewmodel.CategoryAdapter;
-import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Add extends AppCompatActivity {
+public class AddActivity extends AppCompatActivity {
     private TextView tvHello2;
     private RecyclerView rvCategory;
     private CategoryAdapter categoryAdapter;
@@ -46,6 +38,6 @@ public class Add extends AppCompatActivity {
         categoryAdapter = new CategoryAdapter(databaseHandler.getAllCategories());
         rvCategory.setAdapter(categoryAdapter);
 
-        Nav nav = new Nav(Add.this);
+        Nav nav = new Nav(AddActivity.this);
     }
 }

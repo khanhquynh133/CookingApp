@@ -14,7 +14,7 @@ import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 
 
-public class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
     TextView login;
     Button register_btn;
     EditText fullName, email, password;
@@ -27,7 +27,7 @@ public class Register extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Register.this, Login.class));
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
         });
 
@@ -39,7 +39,7 @@ public class Register extends AppCompatActivity {
                 email = findViewById(R.id.etemailR);
                 password = findViewById(R.id.etpassR);
                 NetworkProvider.self().signUp(fullName.getText().toString(), email.getText().toString(), password.getText().toString());
-                startActivity(new Intent(Register.this, Login.class));
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
         });
     }

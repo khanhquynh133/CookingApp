@@ -1,26 +1,23 @@
 package com.finalexam.cookingapp.viewmodel;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
 import com.finalexam.cookingapp.model.Category;
+import com.finalexam.cookingapp.model.Ingredient;
 import com.finalexam.cookingapp.model.User;
-import com.finalexam.cookingapp.view.Add;
-import com.finalexam.cookingapp.view.HomePage;
-import com.finalexam.cookingapp.model.LoginResponse;
-import com.finalexam.cookingapp.model.SignUpRequest;
-import com.finalexam.cookingapp.model.SignUpResponse;
+import com.finalexam.cookingapp.view.AddActivity;
+import com.finalexam.cookingapp.view.HomeActivity;
+import com.finalexam.cookingapp.model.response.LoginResponse;
+import com.finalexam.cookingapp.model.request.SignUpRequest;
+import com.finalexam.cookingapp.model.response.SignUpResponse;
 import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -96,7 +93,7 @@ public final class NetworkProvider {
                     user.setCurrentAccount(1);
                     databaseHandler.addUser(user);
 
-                    loginActivity.startActivity(new Intent(loginActivity, HomePage.class));
+                    loginActivity.startActivity(new Intent(loginActivity, HomeActivity.class));
                 } else {
                     String errorMessage = getErrorMessage(response.errorBody());
                     System.out.println(errorMessage);
@@ -123,12 +120,32 @@ public final class NetworkProvider {
                     databaseHandler.addCategory(category);
                 }
 
-                activity.startActivity(new Intent(activity.getApplicationContext(), Add.class));
+                activity.startActivity(new Intent(activity.getApplicationContext(), AddActivity.class));
                 activity.overridePendingTransition(0, 0);
             }
 
             @Override
             public void onFailure(Call<List<Category>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void getAllIngredients(Context context) {
+        retrofit.create(APIService.class).getAllIngredient().enqueue(new Callback<List<Ingredient>>() {
+            @Override
+            public void onResponse(Call<List<Ingredient>> call, Response<List<Ingredient>> response) {
+                List<Ingredient> ingredients = response.body();
+                DatabaseHandler databaseHandler = new DatabaseHandler(context);
+
+                for (Ingredient ingredient : ingredients) {
+                    if (databaseHandler.getIngredient(ingredient.getId()) != null) continue;
+                    databaseHandler.addIngredient(ingredient);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Ingredient>> call, Throwable t) {
 
             }
         });

@@ -21,7 +21,7 @@ public class AddFood extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(AddFood.this,Add.class));
+                startActivity(new Intent(AddFood.this, AddActivity.class));
             }
         });
         save = findViewById(R.id.btn_savecake);

@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         User user = databaseHandler.getCurrentAccount();
         if (user != null)
-            startActivity(new Intent(MainActivity.this, HomePage.class));
+            startActivity(new Intent(MainActivity.this, HomeActivity.class));
 
         setContentView(R.layout.activity_main);
         login = findViewById(R.id.btn_login);
@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Login.class));
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Register.class));
+                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
             }
         });
     }

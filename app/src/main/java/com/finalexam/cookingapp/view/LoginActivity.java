@@ -13,7 +13,7 @@ import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
 import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     TextView register;
     Button login;
     EditText email, password;
@@ -28,7 +28,7 @@ public class Login extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this,Register.class));
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
         login = findViewById(R.id.btn_loginL);
@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity {
                 email = findViewById(R.id.etemailL);
                 password = findViewById(R.id.etpassL);
 
-                NetworkProvider.self().login(email.getText().toString(), password.getText().toString(), Login.this);
+                NetworkProvider.self().login(email.getText().toString(), password.getText().toString(), LoginActivity.this);
 //                startActivity(new Intent(Login.this,HomePage.class));
             }
         });

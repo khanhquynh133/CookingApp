@@ -19,7 +19,7 @@ public class Infor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(Infor.this,HomePage.class));
+                startActivity(new Intent(Infor.this, HomeActivity.class));
             }
         });
     }

@@ -3,7 +3,6 @@ package com.finalexam.cookingapp.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
@@ -45,7 +44,7 @@ public class Added extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), HomePage.class));
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.add:
@@ -55,7 +54,7 @@ public class Added extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.out:
-                        startActivity(new Intent(getApplicationContext(), Login.class));
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                 }

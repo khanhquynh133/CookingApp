@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.model.Category;
-import com.finalexam.cookingapp.view.AddRecipe;
+import com.finalexam.cookingapp.view.AddRecipeActivity;
 
 import java.util.List;
 
@@ -65,7 +65,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             ibAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), AddRecipe.class);
+                    Intent intent = new Intent(v.getContext(), AddRecipeActivity.class);
                     intent.putExtra("categoryName", categoryName);
                     v.getContext().startActivity(intent);
                 }

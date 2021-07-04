@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.finalexam.cookingapp.model.Category;
+import com.finalexam.cookingapp.model.Ingredient;
 import com.finalexam.cookingapp.model.User;
 import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 
@@ -32,6 +33,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String CATEGORY_COLUMN_IMAGE_ID = "image_id";
     private static final String CATEGORY_COLUMN_NAME = "name";
 
+    private static final String INGREDIENT_TABLE_NAME = "ingredient";
+    private static final String INGREDIENT_COLUMN_ID = "id";
+    private static final String INGREDIENT_COLUMN_NAME = "name";
+
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -40,14 +45,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createUserTableCommand = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT, %s INTEGER)", USER_TABLE_NAME, USER_COLUMN_ID, USER_COLUMN_FULL_NAME, USER_COLUMN_EMAIL, USER_COLUMN_CURRENT_ACCOUNT);
         String createCategoryTableCommand = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT)", CATEGORY_TABLE_NAME, CATEGORY_COLUMN_ID, CATEGORY_COLUMN_IMAGE_ID, CATEGORY_COLUMN_NAME);
+        String createIngredientTableCommand = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT)", INGREDIENT_TABLE_NAME, INGREDIENT_COLUMN_ID, INGREDIENT_TABLE_NAME);
+
         db.execSQL(createCategoryTableCommand);
         db.execSQL(createUserTableCommand);
+        db.execSQL(createIngredientTableCommand);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String dropUserTable = String.format("DROP TABLE IF EXISTS %s", USER_TABLE_NAME);
         String dropCategoryTable = String.format("DROP TABLE IF EXISTS %s", CATEGORY_TABLE_NAME);
+        String dropIngredientTable = String.format("DROP TABLE IF EXISTS %s", INGREDIENT_TABLE_NAME);
+
         db.execSQL(dropUserTable);
         db.execSQL(dropCategoryTable);
 
@@ -117,7 +127,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     cursor.moveToNext();
                 }
             }
-            System.out.println(categories.size());
 
             return categories;
 
@@ -137,6 +146,57 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
             Category category = new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
             return category;
+        } catch (CursorIndexOutOfBoundsException ex) {
+            return null;
+        }
+    }
+
+    public void addIngredient(Ingredient ingredient) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(INGREDIENT_COLUMN_ID, ingredient.getId());
+        values.put(INGREDIENT_COLUMN_NAME, ingredient.getIngredientName());
+
+        db.insert(INGREDIENT_TABLE_NAME, null, values);
+    }
+
+    public List<Ingredient> getAllIngredients() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        List<Ingredient> ingredients = new ArrayList<>();
+        try {
+            String getAllIngredientsCommand = "SELECT * FROM " + INGREDIENT_TABLE_NAME;
+            Cursor cursor = db.rawQuery(getAllIngredientsCommand, null);
+
+
+            if (cursor.moveToFirst()) {
+                while(!cursor.isAfterLast()) {
+                    Ingredient ingredient = new Ingredient(cursor.getInt(0), cursor.getString(1));
+                    ingredients.add(ingredient);
+
+                    cursor.moveToNext();
+                }
+            }
+
+            return ingredients;
+
+        } catch (CursorIndexOutOfBoundsException ex) {
+        }
+        return ingredients;
+    }
+
+    public Ingredient getIngredient(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        try {
+            Cursor cursor = db.query(INGREDIENT_TABLE_NAME, null, INGREDIENT_COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
+
+            if (cursor != null)
+                cursor.moveToFirst();
+
+            Ingredient ingredient = new Ingredient(cursor.getInt(0), cursor.getString(1));
+            return ingredient;
         } catch (CursorIndexOutOfBoundsException ex) {
             return null;
         }
