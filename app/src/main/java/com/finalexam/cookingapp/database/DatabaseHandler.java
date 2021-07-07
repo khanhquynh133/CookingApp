@@ -45,7 +45,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createUserTableCommand = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT, %s INTEGER)", USER_TABLE_NAME, USER_COLUMN_ID, USER_COLUMN_FULL_NAME, USER_COLUMN_EMAIL, USER_COLUMN_CURRENT_ACCOUNT);
         String createCategoryTableCommand = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT)", CATEGORY_TABLE_NAME, CATEGORY_COLUMN_ID, CATEGORY_COLUMN_IMAGE_ID, CATEGORY_COLUMN_NAME);
-        String createIngredientTableCommand = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT)", INGREDIENT_TABLE_NAME, INGREDIENT_COLUMN_ID, INGREDIENT_TABLE_NAME);
+        String createIngredientTableCommand = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT)", INGREDIENT_TABLE_NAME, INGREDIENT_COLUMN_ID, INGREDIENT_COLUMN_NAME);
 
         db.execSQL(createCategoryTableCommand);
         db.execSQL(createUserTableCommand);

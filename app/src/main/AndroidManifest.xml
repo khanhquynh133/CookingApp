@@ -24,9 +24,6 @@
         <activity android:name=".view.HomeActivity"/>
         <activity android:name=".view.Infor"/>
         <activity android:name=".view.Fav"/>
-        <activity android:name=".view.AddCake"/>
-        <activity android:name=".view.AddFood"/>
-        <activity android:name=".view.AddDrink"/>
         <activity android:name=".view.AddedCake"/>
         <activity android:name=".view.AddedFood"/>
         <activity android:name=".view.AddedDrink"/>

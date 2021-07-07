@@ -7,32 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".IngredientsFragment" >
 
-    <Spinner
-        android:id="@+id/s_list_select_ingredients"
-        android:layout_width="227dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/et_quantity"
-        android:layout_width="125dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintStart_toEndOf="@+id/s_list_select_ingredients"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ListView
+        android:id="@+id/lv_frg_ingredients"
         android:layout_width="376dp"
-        android:layout_height="583dp"
+        android:layout_height="241dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/s_list_select_ingredients" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_add_ingredient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="24dp"
+        android:text="Add ingredient"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv_frg_ingredients" />
 </androidx.constraintlayout.widget.ConstraintLayout>

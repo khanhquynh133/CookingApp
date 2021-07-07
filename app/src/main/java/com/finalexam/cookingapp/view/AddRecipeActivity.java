@@ -11,8 +11,12 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.finalexam.cookingapp.R;
+import com.finalexam.cookingapp.model.DetailIngredient;
 import com.finalexam.cookingapp.viewmodel.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddRecipeActivity extends AppCompatActivity {
     ImageButton back;
@@ -20,9 +24,21 @@ public class AddRecipeActivity extends AppCompatActivity {
     TabLayout tlAddRecipe;
     ViewPager vpAddRecipe;
 
+    static List<DetailIngredient> detailIngredients;
+
+    public static List<DetailIngredient> getDetailIngredients() {
+        return detailIngredients;
+    }
+
+    public static void addDetailIngredient(DetailIngredient detailIngredient) {
+        detailIngredients.add(detailIngredient);
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String categoryName = getIntent().getStringExtra("categoryName");
+        if (detailIngredients == null)
+            detailIngredients = new ArrayList<>();
 
         setContentView(R.layout.activity_addrecipe);
 
@@ -41,7 +57,7 @@ public class AddRecipeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(AddRecipeActivity.this,Added.class));
+                startActivity(new Intent(AddRecipeActivity.this, Added.class));
             }
         });
     }
