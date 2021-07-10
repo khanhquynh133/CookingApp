@@ -32,6 +32,7 @@ public class PreparationsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_preparations, container, false);
 
         etPreparation = view.findViewById(R.id.et_preparation);
+//        etPreparation
 
         return view;
     }

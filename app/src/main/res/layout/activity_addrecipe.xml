@@ -112,15 +112,15 @@
         app:layout_constraintTop_toBottomOf="@+id/tl_add_recipe" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tv_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="300dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="17dp"
         android:text="Save"
+        android:textColor="#FC9801"
         android:textSize="19dp"
         android:textStyle="bold"
-        android:textColor="#FC9801"
         app:layout_constraintStart_toEndOf="@+id/btn_backaddcake"
         app:layout_constraintTop_toTopOf="parent" />
 

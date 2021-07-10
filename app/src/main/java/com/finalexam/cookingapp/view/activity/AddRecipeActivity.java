@@ -3,6 +3,7 @@ package com.finalexam.cookingapp.view.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class AddRecipeActivity extends AppCompatActivity {
     ImageButton back;
-    TextView tvCategoryTitle;
+    TextView tvCategoryTitle, tvSave;
     TabLayout tlAddRecipe;
     ViewPager vpAddRecipe;
 
@@ -48,6 +49,12 @@ public class AddRecipeActivity extends AppCompatActivity {
 
                 startActivity(new Intent(AddRecipeActivity.this, Added.class));
             }
+        });
+
+        tvSave = findViewById(R.id.tv_save);
+        tvSave.setOnClickListener(v -> {
+            EditText etPreparation = findViewById(R.id.et_preparation);
+            System.out.println(etPreparation.getText().toString().length());
         });
     }
 }

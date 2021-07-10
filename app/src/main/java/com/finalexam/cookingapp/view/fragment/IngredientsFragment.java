@@ -60,7 +60,6 @@ public class IngredientsFragment extends Fragment {
         btnAddIngredient = view.findViewById(R.id.btn_add_ingredient);
         btnAddIngredient.setOnClickListener(v -> {
             Dialog dialog = new Dialog(view.getContext());
-            dialog.setTitle("ABC");
             dialog.setCancelable(false);
             dialog.setContentView(R.layout.dialog_add_item_ingredient);
 
