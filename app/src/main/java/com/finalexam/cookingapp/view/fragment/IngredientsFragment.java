@@ -2,7 +2,9 @@ package com.finalexam.cookingapp.view.fragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +14,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.finalexam.cookingapp.GlobalStorage;
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
-import com.finalexam.cookingapp.model.DetailIngredient;
+import com.finalexam.cookingapp.model.global.storage.DetailIngredient;
 import com.finalexam.cookingapp.model.Ingredient;
 import com.finalexam.cookingapp.view.activity.AddRecipeActivity;
 import com.finalexam.cookingapp.viewmodel.NetworkProvider;
@@ -41,6 +44,7 @@ public class IngredientsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ingredients, container, false);
 
+        GlobalStorage globalStorage = (GlobalStorage) view.getContext().getApplicationContext();
 
         NetworkProvider.self().getAllIngredients(view.getContext());
         databaseHandler = new DatabaseHandler(view.getContext());
@@ -48,7 +52,9 @@ public class IngredientsFragment extends Fragment {
 
         lvIngredients = view.findViewById(R.id.lv_frg_ingredients);
 
-        ArrayAdapter<String> addedDetailIngredientsAdapter = new ArrayAdapter(view.getContext(), R.layout.item_lv_ingredients_added, AddRecipeActivity.getDetailIngredientStrs());
+        ArrayAdapter<String> addedDetailIngredientsAdapter = new ArrayAdapter(view.getContext(),
+                R.layout.item_lv_ingredients_added,
+                globalStorage.getRecipeData().getDetailIngredientsContent());
         lvIngredients.setAdapter(addedDetailIngredientsAdapter);
 
         btnAddIngredient = view.findViewById(R.id.btn_add_ingredient);
@@ -59,7 +65,8 @@ public class IngredientsFragment extends Fragment {
             dialog.setContentView(R.layout.dialog_add_item_ingredient);
 
             Spinner spIngredients = dialog.findViewById(R.id.sp_ingredients_dialog);
-            ArrayAdapter<Ingredient> listAvailableIngredientAdapter = new ArrayAdapter(dialog.getContext(), R.layout.item_ingredient, ingredients);
+            ArrayAdapter<Ingredient> listAvailableIngredientAdapter = new ArrayAdapter(
+                    dialog.getContext(), R.layout.item_ingredient, ingredients);
 
             listAvailableIngredientAdapter.setDropDownViewResource(R.layout.item_ingredient);
             spIngredients.setAdapter(listAvailableIngredientAdapter);
@@ -73,7 +80,7 @@ public class IngredientsFragment extends Fragment {
                 String quantity = etQuantity.getText().toString();
 
                 Ingredient ingredient = ingredients.get(position);
-                AddRecipeActivity.addDetailIngredient(new DetailIngredient(ingredient, quantity));
+                globalStorage.getRecipeData().addDetailIngredient(new DetailIngredient(ingredient, quantity));
                 addedDetailIngredientsAdapter.notifyDataSetChanged();
                 dialog.cancel();
             });

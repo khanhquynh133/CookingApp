@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.finalexam.cookingapp.R;
-import com.finalexam.cookingapp.model.DetailIngredient;
+import com.finalexam.cookingapp.model.global.storage.DetailIngredient;
 import com.finalexam.cookingapp.view.Added;
 import com.finalexam.cookingapp.viewmodel.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
@@ -25,26 +25,9 @@ public class AddRecipeActivity extends AppCompatActivity {
     TabLayout tlAddRecipe;
     ViewPager vpAddRecipe;
 
-    static List<DetailIngredient> detailIngredients;
-    static List<String> detailIngredientStrs;
-
-    public static List<DetailIngredient> getDetailIngredients() {
-        return detailIngredients;
-    }
-    public static List<String> getDetailIngredientStrs() {return detailIngredientStrs;}
-
-    public static void addDetailIngredient(DetailIngredient detailIngredient) {
-        detailIngredients.add(detailIngredient);
-        detailIngredientStrs.add(detailIngredient.toString());
-    }
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String categoryName = getIntent().getStringExtra("categoryName");
-        if (detailIngredients == null) {
-            detailIngredients = new ArrayList<>();
-            detailIngredientStrs = new ArrayList<>();
-        }
 
         setContentView(R.layout.activity_addrecipe);
 

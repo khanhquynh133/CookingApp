@@ -1,4 +1,6 @@
-package com.finalexam.cookingapp.model;
+package com.finalexam.cookingapp.model.global.storage;
+
+import com.finalexam.cookingapp.model.Ingredient;
 
 public class DetailIngredient {
     private Ingredient ingredient;

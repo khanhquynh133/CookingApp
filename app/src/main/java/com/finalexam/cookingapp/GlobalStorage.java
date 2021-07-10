@@ -2,18 +2,21 @@ package com.finalexam.cookingapp;
 
 import android.app.Application;
 
+import com.finalexam.cookingapp.model.global.storage.RecipeData;
+
 public class GlobalStorage extends Application {
-    private String string;
+    private RecipeData recipeData;
 
     public GlobalStorage() {
         super();
+        recipeData = new RecipeData();
     }
 
-    public String getString() {
-        return string;
+    public RecipeData getRecipeData() {
+        return recipeData;
     }
 
-    public void setString(String string) {
-        this.string = string;
+    public void setRecipeData(RecipeData recipeData) {
+        this.recipeData = recipeData;
     }
 }
