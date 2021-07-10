@@ -25,20 +25,25 @@ public class AddRecipeActivity extends AppCompatActivity {
     ViewPager vpAddRecipe;
 
     static List<DetailIngredient> detailIngredients;
+    static List<String> detailIngredientStrs;
 
     public static List<DetailIngredient> getDetailIngredients() {
         return detailIngredients;
     }
+    public static List<String> getDetailIngredientStrs() {return detailIngredientStrs;}
 
     public static void addDetailIngredient(DetailIngredient detailIngredient) {
         detailIngredients.add(detailIngredient);
+        detailIngredientStrs.add(detailIngredient.toString());
     }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String categoryName = getIntent().getStringExtra("categoryName");
-        if (detailIngredients == null)
+        if (detailIngredients == null) {
             detailIngredients = new ArrayList<>();
+            detailIngredientStrs = new ArrayList<>();
+        }
 
         setContentView(R.layout.activity_addrecipe);
 

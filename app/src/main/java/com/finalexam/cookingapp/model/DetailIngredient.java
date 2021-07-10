@@ -24,4 +24,9 @@ public class DetailIngredient {
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return quantity + " " + ingredient.getIngredientName().toLowerCase();
+    }
 }

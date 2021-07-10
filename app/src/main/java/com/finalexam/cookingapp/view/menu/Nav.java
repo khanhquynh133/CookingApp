@@ -33,6 +33,7 @@ public final class Nav {
                         activity.overridePendingTransition(0, 0);
                         return true;
                     case R.id.add:
+                        System.out.println("Add activity");
                         NetworkProvider.self().getAllCategories(activity);
                         return true;
                     case R.id.search:
