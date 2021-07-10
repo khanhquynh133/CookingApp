@@ -10,8 +10,8 @@ import com.finalexam.cookingapp.R;
 
 import com.finalexam.cookingapp.database.DatabaseHandler;
 import com.finalexam.cookingapp.view.Fav;
-import com.finalexam.cookingapp.view.HomeActivity;
-import com.finalexam.cookingapp.view.LoginActivity;
+import com.finalexam.cookingapp.view.activity.HomeActivity;
+import com.finalexam.cookingapp.view.activity.LoginActivity;
 import com.finalexam.cookingapp.view.SearchPage;
 import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

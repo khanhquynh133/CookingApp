@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.model.Category;
-import com.finalexam.cookingapp.view.AddRecipeActivity;
+import com.finalexam.cookingapp.view.activity.AddRecipeActivity;
 
 import java.util.List;
 

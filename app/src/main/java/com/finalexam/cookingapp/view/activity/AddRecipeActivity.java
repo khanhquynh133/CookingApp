@@ -1,4 +1,4 @@
-package com.finalexam.cookingapp.view;
+package com.finalexam.cookingapp.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.model.DetailIngredient;
+import com.finalexam.cookingapp.view.Added;
 import com.finalexam.cookingapp.viewmodel.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 

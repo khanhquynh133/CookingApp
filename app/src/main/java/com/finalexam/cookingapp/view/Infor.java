@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.finalexam.cookingapp.R;
+import com.finalexam.cookingapp.view.activity.HomeActivity;
 
 public class Infor extends AppCompatActivity {
     ImageButton back;

@@ -16,7 +16,7 @@ import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
 import com.finalexam.cookingapp.model.DetailIngredient;
 import com.finalexam.cookingapp.model.Ingredient;
-import com.finalexam.cookingapp.view.AddRecipeActivity;
+import com.finalexam.cookingapp.view.activity.AddRecipeActivity;
 import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 
 import java.util.List;
@@ -49,9 +49,6 @@ public class IngredientsFragment extends Fragment {
         lvIngredients = view.findViewById(R.id.lv_frg_ingredients);
 
         ArrayAdapter<String> addedDetailIngredientsAdapter = new ArrayAdapter(view.getContext(), R.layout.item_lv_ingredients_added, AddRecipeActivity.getDetailIngredientStrs());
-//        System.out.println(detailIngredients.size());
-//        if (detailIngredients.size() > 0)
-//            System.out.println("Cotent" + detailIngredients.get(0));
         lvIngredients.setAdapter(addedDetailIngredientsAdapter);
 
         btnAddIngredient = view.findViewById(R.id.btn_add_ingredient);
@@ -77,7 +74,6 @@ public class IngredientsFragment extends Fragment {
 
                 Ingredient ingredient = ingredients.get(position);
                 AddRecipeActivity.addDetailIngredient(new DetailIngredient(ingredient, quantity));
-//                System.out.println(AddRecipeActivity.getDetailIngredients().size());
                 addedDetailIngredientsAdapter.notifyDataSetChanged();
                 dialog.cancel();
             });

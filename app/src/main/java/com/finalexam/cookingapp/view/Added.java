@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.finalexam.cookingapp.R;
+import com.finalexam.cookingapp.view.activity.HomeActivity;
+import com.finalexam.cookingapp.view.activity.LoginActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Added extends AppCompatActivity {

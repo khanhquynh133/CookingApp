@@ -1,4 +1,4 @@
-package com.finalexam.cookingapp.view;
+package com.finalexam.cookingapp.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
