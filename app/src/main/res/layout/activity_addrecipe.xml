@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,45 +10,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
-        android:layout_marginTop="79dp"
         android:layout_marginEnd="23dp"
         android:fontFamily="@font/poppinssemibold"
         android:text="Cake"
         android:textSize="17sp"
         app:layout_constraintEnd_toStartOf="@+id/imageView12"
         app:layout_constraintStart_toEndOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/btn_upload"
-        android:layout_width="413dp"
-        android:layout_height="224dp"
-        app:srcCompat="@drawable/bgadd"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-3dp"
-        tools:layout_editor_absoluteY="-5dp" />
+        tools:layout_editor_absoluteY="239dp" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageView8"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="134dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="134dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_height="220dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/upload"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/freshorangecake1" />
 
     <ImageButton
         android:id="@+id/btn_backaddcake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/btn_circle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -60,22 +43,21 @@
         android:id="@+id/imageView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="94dp"
+        android:layout_marginStart="64dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/line" />
+        app:srcCompat="@drawable/line"
+        tools:layout_editor_absoluteY="254dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="94dp"
         android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
         app:srcCompat="@drawable/line"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="254dp" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tl_add_recipe"
@@ -111,17 +93,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tl_add_recipe" />
 
-    <TextView
-        android:id="@+id/tv_save"
+    <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="17dp"
-        android:text="Save"
-        android:textColor="#FC9801"
-        android:textSize="19dp"
-        android:textStyle="bold"
+        android:layout_marginStart="264dp"
+        android:layout_marginTop="11dp"
+        android:text="SAVE"
+        app:backgroundTint="#FC9801"
+        app:cornerRadius="20dp"
         app:layout_constraintStart_toEndOf="@+id/btn_backaddcake"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
