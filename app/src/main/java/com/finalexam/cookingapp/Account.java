@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ public class Account extends AppCompatActivity {
     ImageButton people1,back;
     EditText pass;
     TextView acc,regis;
+    Button login;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
@@ -46,5 +48,12 @@ public class Account extends AppCompatActivity {
         pass = findViewById(R.id.etpassA);
         Animation animFade1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate);
         pass.startAnimation(animFade);
+        login = findViewById(R.id.btn_loginA);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Account.this,HomePage.class));
+            }
+        });
     }
 }

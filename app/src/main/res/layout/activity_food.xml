@@ -14,6 +14,17 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-3dp"
         tools:layout_editor_absoluteY="-2dp" />
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="396dp"
+        android:layout_height="666dp"
+        android:layout_marginTop="155dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bgcakepage"
+        tools:ignore="MissingConstraints" />
     <ImageButton
         android:id="@+id/btn_backF"
         android:layout_width="wrap_content"
@@ -41,25 +52,37 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
+            <ImageView
+                android:id="@+id/ngan"
+                android:layout_width="10dp"
+                android:layout_height="390dp" />
             <ImageButton
                 android:id="@+id/btn_food1"
-                android:layout_width="350dp"
-                android:layout_height="500dp"
+                android:layout_width="300dp"
+                android:layout_height="390dp"
                 android:background="@drawable/food1"></ImageButton>
-
+            <ImageView
+                android:id="@+id/ngan1"
+                android:layout_width="40dp"
+                android:layout_height="390dp" />
             <ImageButton
                 android:id="@+id/btn_food2"
-                android:layout_width="350dp"
-                android:layout_height="500dp"
+                android:layout_width="300dp"
+                android:layout_height="390dp"
                 android:background="@drawable/food2"></ImageButton>
-
+            <ImageView
+                android:id="@+id/ngan2"
+                android:layout_width="40dp"
+                android:layout_height="390dp" />
             <ImageButton
                 android:id="@+id/btn_food3"
                 android:layout_width="350dp"
                 android:layout_height="500dp"
                 android:background="@drawable/food3"></ImageButton>
-
+            <ImageView
+                android:id="@+id/ngan2"
+                android:layout_width="40dp"
+                android:layout_height="390dp" />
             <ImageButton
                 android:id="@+id/btn_food4"
                 android:layout_width="350dp"
