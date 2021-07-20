@@ -5,10 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.finalexam.cookingapp.GlobalStorage;
 import com.finalexam.cookingapp.database.DatabaseHandler;
 import com.finalexam.cookingapp.model.Category;
 import com.finalexam.cookingapp.model.Ingredient;
 import com.finalexam.cookingapp.model.User;
+import com.finalexam.cookingapp.model.response.UploadImageResponse;
 import com.finalexam.cookingapp.view.activity.AddActivity;
 import com.finalexam.cookingapp.view.activity.HomeActivity;
 import com.finalexam.cookingapp.model.response.LoginResponse;
@@ -17,10 +19,14 @@ import com.finalexam.cookingapp.model.response.SignUpResponse;
 import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -146,6 +152,24 @@ public final class NetworkProvider {
 
             @Override
             public void onFailure(Call<List<Ingredient>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void uploadImage() {
+        String imageUrl = GlobalStorage.self().getRecipeData().getCoverImageUrl();
+        File file = new File(imageUrl);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part multipartBody = MultipartBody.Part.createFormData("image", file.getName(), requestBody);
+        retrofit.create(APIService.class).uploadImage(multipartBody).enqueue(new Callback<UploadImageResponse>() {
+            @Override
+            public void onResponse(Call<UploadImageResponse> call, Response<UploadImageResponse> response) {
+                System.out.println("Ok");
+            }
+
+            @Override
+            public void onFailure(Call<UploadImageResponse> call, Throwable t) {
 
             }
         });

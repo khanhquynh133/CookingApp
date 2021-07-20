@@ -7,6 +7,15 @@ public class RecipeData {
     private List<DetailIngredient> detailIngredients;
     private List<String> detailIngredientsContent;
     private String preparation;
+    private String coverImageUrl;
+
+    public String getCoverImageUrl() {
+        return coverImageUrl;
+    }
+
+    public void setCoverImageUrl(String coverImageUrl) {
+        this.coverImageUrl = coverImageUrl;
+    }
 
     public RecipeData(List<DetailIngredient> detailIngredients, String preparation) {
         this.detailIngredients = detailIngredients;

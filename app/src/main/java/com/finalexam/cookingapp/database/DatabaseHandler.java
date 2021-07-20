@@ -7,12 +7,9 @@ import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 import com.finalexam.cookingapp.model.Category;
 import com.finalexam.cookingapp.model.Ingredient;
 import com.finalexam.cookingapp.model.User;
-import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 
 import java.util.ArrayList;
 import java.util.List;

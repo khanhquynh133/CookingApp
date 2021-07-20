@@ -1,10 +1,17 @@
 package com.finalexam.cookingapp.view.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -12,20 +19,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.finalexam.cookingapp.GlobalStorage;
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.model.global.storage.DetailIngredient;
+import com.finalexam.cookingapp.utils.RealPathUtil;
 import com.finalexam.cookingapp.view.Added;
+import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 import com.finalexam.cookingapp.viewmodel.ViewPagerAdapter;
+import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddRecipeActivity extends AppCompatActivity {
+    private final static int REQUEST_CODE = 10;
+
     ImageButton back;
-    TextView tvCategoryTitle, tvSave;
+    TextView tvCategoryTitle;
     TabLayout tlAddRecipe;
     ViewPager vpAddRecipe;
+    FloatingActionButton fabImage;
+    ImageView ivCover;
+    Button btnSave;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +69,31 @@ public class AddRecipeActivity extends AppCompatActivity {
             }
         });
 
-        tvSave = findViewById(R.id.tv_save);
-        tvSave.setOnClickListener(v -> {
-            EditText etPreparation = findViewById(R.id.et_preparation);
-            System.out.println(etPreparation.getText().toString().length());
+        ivCover = findViewById(R.id.iv_cover);
+
+        fabImage = findViewById(R.id.fab_image);
+        fabImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+                    return;
+                }
+
+                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                    requestPermissions(permission, REQUEST_CODE);
+                }
+                ImagePicker.Companion.with(AddRecipeActivity.this).start();
+
+            }
+        });
+
+        btnSave = findViewById(R.id.btn_save);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NetworkProvider.self().uploadImage();
+            }
         });
     }
 
@@ -63,5 +101,11 @@ public class AddRecipeActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode,
                                     @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        Uri uri = data.getData();
+        String imageUrl = RealPathUtil.getRealPath(getApplicationContext(), uri);
+        Log.i("Image url", imageUrl);
+        GlobalStorage.self().getRecipeData().setCoverImageUrl(imageUrl);
+        ivCover.setImageURI(uri);
     }
 }
