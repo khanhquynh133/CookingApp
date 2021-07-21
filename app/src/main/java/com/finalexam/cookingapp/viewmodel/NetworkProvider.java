@@ -36,12 +36,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public final class NetworkProvider {
     private static volatile NetworkProvider mInstance = null;
+    private static final String BASE_URL = "http://192.168.1.5:8000";
 
     private Retrofit retrofit;
 
     private NetworkProvider() {
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.5:8000")
+                .baseUrl(BASE_URL)
                 .client(new OkHttpClient.Builder().build())
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
                 .build();
