@@ -2,6 +2,8 @@ package com.finalexam.cookingapp.viewmodel;
 
 import com.finalexam.cookingapp.model.Category;
 import com.finalexam.cookingapp.model.Ingredient;
+import com.finalexam.cookingapp.model.request.CreateFoodRequest;
+import com.finalexam.cookingapp.model.response.CreateFoodResponse;
 import com.finalexam.cookingapp.model.response.LoginResponse;
 import com.finalexam.cookingapp.model.request.SignUpRequest;
 import com.finalexam.cookingapp.model.response.SignUpResponse;
@@ -34,6 +36,9 @@ public interface APIService {
     Call<List<Ingredient>> getAllIngredient();
 
     @Multipart
-    @POST(prefixUrl + "upload/image")
+    @POST(prefixUrl + "image")
     Call<UploadImageResponse> uploadImage(@Part MultipartBody.Part coverImage);
+
+    @POST(prefixUrl + "food")
+    Call<CreateFoodResponse> createFood(@Body CreateFoodRequest request);
 }

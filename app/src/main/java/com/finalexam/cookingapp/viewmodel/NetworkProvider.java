@@ -10,6 +10,8 @@ import com.finalexam.cookingapp.database.DatabaseHandler;
 import com.finalexam.cookingapp.model.Category;
 import com.finalexam.cookingapp.model.Ingredient;
 import com.finalexam.cookingapp.model.User;
+import com.finalexam.cookingapp.model.request.CreateFoodRequest;
+import com.finalexam.cookingapp.model.response.CreateFoodResponse;
 import com.finalexam.cookingapp.model.response.UploadImageResponse;
 import com.finalexam.cookingapp.view.activity.AddActivity;
 import com.finalexam.cookingapp.view.activity.HomeActivity;
@@ -20,6 +22,7 @@ import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
@@ -78,7 +81,10 @@ public final class NetworkProvider {
     public void signUp(String full_name, String email, String password) {
         retrofit.create(APIService.class).signUp(new SignUpRequest(full_name, email, password)).enqueue(new Callback<SignUpResponse>() {
             @Override
-            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+            public void onResponse(
+                    Call<SignUpResponse> call,
+                    Response<SignUpResponse> response
+            ) {
                 System.out.println("Register successfully");
             }
 
@@ -89,10 +95,15 @@ public final class NetworkProvider {
         });
     }
 
-    public void login(String email, String password, Activity loginActivity) {
+    public void login(
+            String email, String password, Activity loginActivity
+    ) {
         retrofit.create(APIService.class).login(email, password).enqueue(new Callback<LoginResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+            public void onResponse(
+                    Call<LoginResponse> call,
+                    Response<LoginResponse> response
+            ) {
                 if (response.isSuccessful()) {
                     DatabaseHandler databaseHandler = new DatabaseHandler(loginActivity.getApplicationContext());
 
@@ -118,12 +129,16 @@ public final class NetworkProvider {
     public void getAllCategories(Activity activity) {
         retrofit.create(APIService.class).getAllCategories().enqueue(new Callback<List<Category>>() {
             @Override
-            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+            public void onResponse(
+                    Call<List<Category>> call,
+                    Response<List<Category>> response
+            ) {
                 List<Category> categories = response.body();
                 DatabaseHandler databaseHandler = new DatabaseHandler(activity.getApplicationContext());
 
                 for (Category category : categories) {
-                    if (databaseHandler.getCategory(category.getId()) != null) continue;
+                    if (databaseHandler.getCategory(category.getId()) != null)
+                        continue;
                     databaseHandler.addCategory(category);
                 }
 
@@ -141,36 +156,66 @@ public final class NetworkProvider {
     public void getAllIngredients(Context context) {
         retrofit.create(APIService.class).getAllIngredient().enqueue(new Callback<List<Ingredient>>() {
             @Override
-            public void onResponse(Call<List<Ingredient>> call, Response<List<Ingredient>> response) {
+            public void onResponse(
+                    Call<List<Ingredient>> call,
+                    Response<List<Ingredient>> response
+            ) {
                 List<Ingredient> ingredients = response.body();
                 DatabaseHandler databaseHandler = new DatabaseHandler(context);
 
                 for (Ingredient ingredient : ingredients) {
-                    if (databaseHandler.getIngredient(ingredient.getId()) != null) continue;
+                    if (databaseHandler.getIngredient(ingredient.getId()) != null)
+                        continue;
                     databaseHandler.addIngredient(ingredient);
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Ingredient>> call, Throwable t) {
+            public void onFailure(
+                    Call<List<Ingredient>> call, Throwable t
+            ) {
 
             }
         });
     }
 
-    public void uploadImage() {
+    public void uploadImage(CreateFoodRequest request) {
         String imageUrl = GlobalStorage.self().getRecipeData().getCoverImageUrl();
         File file = new File(imageUrl);
         RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
         MultipartBody.Part multipartBody = MultipartBody.Part.createFormData("image", file.getName(), requestBody);
         retrofit.create(APIService.class).uploadImage(multipartBody).enqueue(new Callback<UploadImageResponse>() {
             @Override
-            public void onResponse(Call<UploadImageResponse> call, Response<UploadImageResponse> response) {
-                System.out.println("Ok");
+            public void onResponse(
+                    Call<UploadImageResponse> call,
+                    Response<UploadImageResponse> response
+            ) {
+                System.out.println(response.body().getId());
+                request.setCoverImageID(response.body().getId());
+                createFood(request);
             }
 
             @Override
-            public void onFailure(Call<UploadImageResponse> call, Throwable t) {
+            public void onFailure(
+                    Call<UploadImageResponse> call, Throwable t
+            ) {
+
+            }
+        });
+    }
+
+    public void createFood(CreateFoodRequest request) {
+        retrofit.create(APIService.class).createFood(request).enqueue(new Callback<CreateFoodResponse>() {
+            @Override public void onResponse(
+                    Call<CreateFoodResponse> call,
+                    Response<CreateFoodResponse> response
+            ) {
+
+            }
+
+            @Override public void onFailure(
+                    Call<CreateFoodResponse> call, Throwable t
+            ) {
 
             }
         });

@@ -5,21 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_categories7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="23dp"
-        android:fontFamily="@font/poppinssemibold"
-        android:text="Cake"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView12"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/iv_cover"
-        tools:ignore="MissingConstraints" />
-
     <ImageView
         android:id="@+id/iv_cover"
         android:layout_width="wrap_content"
@@ -40,36 +25,14 @@
         app:srcCompat="@drawable/back"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="34dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_cover"
-        app:srcCompat="@drawable/line"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_cover"
-        app:srcCompat="@drawable/line"
-        tools:ignore="MissingConstraints" />
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tl_add_recipe"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="79dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_categories7">
+        app:layout_constraintTop_toBottomOf="@+id/iv_cover">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -119,6 +82,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btn_save"
         app:srcCompat="@drawable/ic_photo_camera_black_48dp" />
+
+    <EditText
+        android:id="@+id/et_food_name"
+        android:layout_width="357dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Food Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_cover" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

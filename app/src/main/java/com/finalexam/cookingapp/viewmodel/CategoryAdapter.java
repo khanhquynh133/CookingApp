@@ -41,6 +41,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.ibLogo.setImageResource(image);
         holder.tvCategoryName.setText(category.getCategoryName());
         holder.categoryName = category.getCategoryName();
+        holder.categoryID = category.getId();
     }
 
     @Override
@@ -54,6 +55,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         private CircleImageView ibLogo;
         private ImageButton ibAdd;
         private TextView tvCategoryName;
+
+        private int categoryID;
         private String categoryName;
 
         public CategoryViewHolder(@NonNull View itemView) {
@@ -67,6 +70,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), AddRecipeActivity.class);
                     intent.putExtra("categoryName", categoryName);
+                    intent.putExtra("categoryID", categoryID);
                     v.getContext().startActivity(intent);
                 }
             });

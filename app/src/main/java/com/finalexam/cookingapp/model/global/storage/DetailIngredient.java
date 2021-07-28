@@ -1,9 +1,15 @@
 package com.finalexam.cookingapp.model.global.storage;
 
 import com.finalexam.cookingapp.model.Ingredient;
+import com.google.gson.annotations.SerializedName;
 
 public class DetailIngredient {
+    @SerializedName("ingredient_id")
+    private int ingredient_id;
+
     private Ingredient ingredient;
+
+    @SerializedName("quantity")
     private String quantity;
 
     public DetailIngredient(Ingredient ingredient, String quantity) {
@@ -25,6 +31,14 @@ public class DetailIngredient {
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
+    }
+
+    public int getIngredient_id() {
+        return ingredient_id;
+    }
+
+    public void setIngredient_id(int ingredient_id) {
+        this.ingredient_id = ingredient_id;
     }
 
     @Override

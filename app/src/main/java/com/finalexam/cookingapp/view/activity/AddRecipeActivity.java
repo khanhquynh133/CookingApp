@@ -22,6 +22,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.finalexam.cookingapp.GlobalStorage;
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.model.global.storage.DetailIngredient;
+import com.finalexam.cookingapp.model.request.CreateFoodRequest;
 import com.finalexam.cookingapp.utils.RealPathUtil;
 import com.finalexam.cookingapp.view.Added;
 import com.finalexam.cookingapp.viewmodel.NetworkProvider;
@@ -37,37 +38,37 @@ public class AddRecipeActivity extends AppCompatActivity {
     private final static int REQUEST_CODE = 10;
 
     ImageButton back;
-    TextView tvCategoryTitle;
     TabLayout tlAddRecipe;
     ViewPager vpAddRecipe;
     FloatingActionButton fabImage;
     ImageView ivCover;
     Button btnSave;
+    EditText etFoodName;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String categoryName = getIntent().getStringExtra("categoryName");
+
+        int categoryID = getIntent().getIntExtra("categoryID", 0);
 
         setContentView(R.layout.activity_addrecipe);
 
         tlAddRecipe = findViewById(R.id.tl_add_recipe);
         vpAddRecipe = findViewById(R.id.vp_add_recipe);
 
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(
+                getSupportFragmentManager(),
+                FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+        );
         vpAddRecipe.setAdapter(viewPagerAdapter);
 
         tlAddRecipe.setupWithViewPager(vpAddRecipe);
 
-        tvCategoryTitle = findViewById(R.id.tv_categories7);
-        tvCategoryTitle.setText(categoryName);
         back = findViewById(R.id.btn_backaddcake);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(AddRecipeActivity.this, Added.class));
-            }
-        });
+        back.setOnClickListener(v -> startActivity(
+                new Intent(
+                        AddRecipeActivity.this,
+                        AddActivity.class
+                )));
 
         ivCover = findViewById(R.id.iv_cover);
 
@@ -79,7 +80,9 @@ public class AddRecipeActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                // Check permission, if not, request
+                if (checkSelfPermission(
+                        Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                     String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
                     requestPermissions(permission, REQUEST_CODE);
                 }
@@ -88,22 +91,37 @@ public class AddRecipeActivity extends AppCompatActivity {
             }
         });
 
+        etFoodName = findViewById(R.id.et_food_name);
+
         btnSave = findViewById(R.id.btn_save);
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NetworkProvider.self().uploadImage();
-            }
+        btnSave.setOnClickListener(view -> {
+            EditText etPreparation = findViewById(R.id.et_preparation);
+            String preparation = etPreparation.getText().toString();
+
+            String foodName = etFoodName.getText().toString();
+            System.out.println(foodName);
+
+            CreateFoodRequest createFoodRequest = new CreateFoodRequest(
+                    categoryID, 0,
+                    GlobalStorage.self().getRecipeData().getDetailIngredients(),
+                    foodName, 0, 0, 0, preparation, null
+            );
+            NetworkProvider.self().uploadImage(createFoodRequest);
         });
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,
-                                    @Nullable Intent data) {
+    protected void onActivityResult(
+            int requestCode, int resultCode,
+            @Nullable Intent data
+    ) {
         super.onActivityResult(requestCode, resultCode, data);
 
         Uri uri = data.getData();
-        String imageUrl = RealPathUtil.getRealPath(getApplicationContext(), uri);
+        String imageUrl = RealPathUtil.getRealPath(
+                getApplicationContext(),
+                uri
+        );
         Log.i("Image url", imageUrl);
         GlobalStorage.self().getRecipeData().setCoverImageUrl(imageUrl);
         ivCover.setImageURI(uri);
