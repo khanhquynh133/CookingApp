@@ -80,7 +80,7 @@
                 android:layout_height="500dp"
                 android:background="@drawable/food3"></ImageButton>
             <ImageView
-                android:id="@+id/ngan2"
+                android:id="@+id/ngan3"
                 android:layout_width="40dp"
                 android:layout_height="390dp" />
             <ImageButton

@@ -37,27 +37,7 @@ public class HomePage extends AppCompatActivity {
                 startActivity(new Intent(HomePage.this,Drink.class));
             }
         });
-        food = findViewById(R.id.btn_food);
-        food.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomePage.this,Food.class));
-            }
-        });
-        cakeFOC = findViewById(R.id.freshorangecake);
-        cakeFOC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomePage.this,FreshOrangeCake.class));
-            }
-        });
-        drinkPT = findViewById(R.id.peachtea);
-        drinkPT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomePage.this,PeachTea.class));
-            }
-        });
+
         BottomNavigationView nav = findViewById(R.id.bottomnav);
         nav.setSelectedItemId(R.id.home);
         nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

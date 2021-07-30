@@ -97,123 +97,7 @@
         app:srcCompat="@drawable/food"
         tools:ignore="MissingConstraints" />
 
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="373dp"
-        android:layout_height="360dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="9dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_recipes"
-        tools:ignore="MissingConstraints,ScrollViewCount">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:layout_editor_absoluteX="51dp"
-                tools:layout_editor_absoluteY="447dp">
-
-                <ImageButton
-                    android:id="@+id/freshorangecake"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/freshorangecake"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/chocolatecake"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/chocolatecake"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/chickensalad"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/chickensalad"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/peachtea"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/peachtea"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/nakedchoco"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/nakedchoco"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:layout_editor_absoluteX="51dp"
-                tools:layout_editor_absoluteY="447dp">
-
-                <ImageButton
-                    android:id="@+id/mojitodeepblue"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/mojitodeepblue"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/muffin"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/muffin"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/sandwich"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/sandwich"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/mojitolime"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/mojitolime"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/pancake"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/pancake"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-    </ScrollView>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomnav"
         android:layout_width="match_parent"
@@ -225,5 +109,66 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_nav"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="195dp"
+        android:layout_height="133dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="53dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_recipes"
+        app:srcCompat="@drawable/freshorangecake1" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="187dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="Fresh Orange Cake   "
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="120 mins"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="197dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="4.8"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView18"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="15dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="34dp"
+        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:srcCompat="@drawable/star" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
