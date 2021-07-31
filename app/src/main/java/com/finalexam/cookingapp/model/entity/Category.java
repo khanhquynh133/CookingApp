@@ -1,4 +1,4 @@
-package com.finalexam.cookingapp.model;
+package com.finalexam.cookingapp.model.entity;
 
 import android.app.Activity;
 

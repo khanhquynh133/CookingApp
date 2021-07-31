@@ -1,7 +1,7 @@
 package com.finalexam.cookingapp.viewmodel;
 
-import com.finalexam.cookingapp.model.Category;
-import com.finalexam.cookingapp.model.Ingredient;
+import com.finalexam.cookingapp.model.entity.Category;
+import com.finalexam.cookingapp.model.entity.Ingredient;
 import com.finalexam.cookingapp.model.request.CreateFoodRequest;
 import com.finalexam.cookingapp.model.response.CreateFoodResponse;
 import com.finalexam.cookingapp.model.response.LoginResponse;

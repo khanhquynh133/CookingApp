@@ -10,13 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
-import com.finalexam.cookingapp.model.User;
+import com.finalexam.cookingapp.model.entity.User;
 import com.finalexam.cookingapp.view.Cake;
 import com.finalexam.cookingapp.view.Drink;
 import com.finalexam.cookingapp.view.Food;
-import com.finalexam.cookingapp.view.FreshOrangeCake;
 import com.finalexam.cookingapp.view.Infor;
-import com.finalexam.cookingapp.view.PeachTea;
 import com.finalexam.cookingapp.view.menu.Nav;
 
 public class HomeActivity extends AppCompatActivity {
@@ -60,20 +58,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, Food.class));
-            }
-        });
-        cakeFOC = findViewById(R.id.freshorangecake);
-        cakeFOC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, FreshOrangeCake.class));
-            }
-        });
-        drinkPT = findViewById(R.id.peachtea);
-        drinkPT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, PeachTea.class));
             }
         });
         Nav nav = new Nav(HomeActivity.this);

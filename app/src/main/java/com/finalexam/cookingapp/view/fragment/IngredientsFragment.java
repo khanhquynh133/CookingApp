@@ -18,8 +18,7 @@ import com.finalexam.cookingapp.GlobalStorage;
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
 import com.finalexam.cookingapp.model.global.storage.DetailIngredient;
-import com.finalexam.cookingapp.model.Ingredient;
-import com.finalexam.cookingapp.view.activity.AddRecipeActivity;
+import com.finalexam.cookingapp.model.entity.Ingredient;
 import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 
 import java.util.List;

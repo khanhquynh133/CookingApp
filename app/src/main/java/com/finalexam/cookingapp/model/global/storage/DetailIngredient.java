@@ -1,6 +1,6 @@
 package com.finalexam.cookingapp.model.global.storage;
 
-import com.finalexam.cookingapp.model.Ingredient;
+import com.finalexam.cookingapp.model.entity.Ingredient;
 import com.google.gson.annotations.SerializedName;
 
 public class DetailIngredient {

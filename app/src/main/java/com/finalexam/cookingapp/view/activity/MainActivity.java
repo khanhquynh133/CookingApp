@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
-import com.finalexam.cookingapp.model.User;
+import com.finalexam.cookingapp.model.entity.User;
 
 public class MainActivity extends AppCompatActivity {
     Button login,register;

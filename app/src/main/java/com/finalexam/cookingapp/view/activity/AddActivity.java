@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
-import com.finalexam.cookingapp.model.User;
+import com.finalexam.cookingapp.model.entity.User;
 import com.finalexam.cookingapp.view.menu.Nav;
 import com.finalexam.cookingapp.viewmodel.CategoryAdapter;
 

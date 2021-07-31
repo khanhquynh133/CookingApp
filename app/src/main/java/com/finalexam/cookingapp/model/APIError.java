@@ -6,5 +6,4 @@ public class APIError {
     public String getMessage() {
         return message;
     }
-
 }

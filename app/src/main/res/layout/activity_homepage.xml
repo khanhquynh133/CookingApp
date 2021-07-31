@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <TextView
         android:id="@+id/tv_hello"
         android:layout_width="wrap_content"
@@ -97,123 +97,7 @@
         app:srcCompat="@drawable/food"
         tools:ignore="MissingConstraints" />
 
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="373dp"
-        android:layout_height="360dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="9dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_recipes"
-        tools:ignore="MissingConstraints,ScrollViewCount">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:layout_editor_absoluteX="51dp"
-                tools:layout_editor_absoluteY="447dp">
-
-                <ImageButton
-                    android:id="@+id/freshorangecake"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/freshorangecake"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/chocolatecake"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/chocolatecake"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/chickensalad"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/chickensalad"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/peachtea"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/peachtea"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/nakedchoco"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/nakedchoco"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:layout_editor_absoluteX="51dp"
-                tools:layout_editor_absoluteY="447dp">
-
-                <ImageButton
-                    android:id="@+id/mojitodeepblue"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/mojitodeepblue"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/muffin"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/muffin"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/sandwich"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/sandwich"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/mojitolime"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/mojitolime"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-                <ImageButton
-                    android:id="@+id/pancake"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/pancake"
-                    tools:layout_editor_absoluteX="201dp"
-                    tools:layout_editor_absoluteY="471dp" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-    </ScrollView>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomnav"
         android:layout_width="match_parent"
@@ -225,5 +109,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_nav"
         tools:ignore="MissingConstraints" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list_food"
+        android:layout_width="411dp"
+        android:layout_height="529dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_recipes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

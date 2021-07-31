@@ -7,9 +7,9 @@ import android.widget.Toast;
 
 import com.finalexam.cookingapp.GlobalStorage;
 import com.finalexam.cookingapp.database.DatabaseHandler;
-import com.finalexam.cookingapp.model.Category;
-import com.finalexam.cookingapp.model.Ingredient;
-import com.finalexam.cookingapp.model.User;
+import com.finalexam.cookingapp.model.entity.Category;
+import com.finalexam.cookingapp.model.entity.Ingredient;
+import com.finalexam.cookingapp.model.entity.User;
 import com.finalexam.cookingapp.model.request.CreateFoodRequest;
 import com.finalexam.cookingapp.model.response.CreateFoodResponse;
 import com.finalexam.cookingapp.model.response.UploadImageResponse;
@@ -22,7 +22,6 @@ import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
@@ -39,7 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public final class NetworkProvider {
     private static volatile NetworkProvider mInstance = null;
-    private static final String BASE_URL = "http://192.168.1.5:8000";
+    private static final String BASE_URL = "http://54.255.2.253:8000";
 
     private Retrofit retrofit;
 
