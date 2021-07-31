@@ -38,7 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public final class NetworkProvider {
     private static volatile NetworkProvider mInstance = null;
-    private static final String BASE_URL = "http://54.255.2.253:8000";
+    private static final String BASE_URL = "http://192.168.1.5:8000";
 
     private Retrofit retrofit;
 
@@ -178,7 +178,7 @@ public final class NetworkProvider {
         });
     }
 
-    public void uploadImage(CreateFoodRequest request) {
+    public void uploadImage(CreateFoodRequest request, Activity addRecipeActivity) {
         String imageUrl = GlobalStorage.self().getRecipeData().getCoverImageUrl();
         File file = new File(imageUrl);
         RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
@@ -192,6 +192,7 @@ public final class NetworkProvider {
                 System.out.println(response.body().getId());
                 request.setCoverImageID(response.body().getId());
                 createFood(request);
+                addRecipeActivity.startActivity(new Intent(addRecipeActivity, HomeActivity.class));
             }
 
             @Override
