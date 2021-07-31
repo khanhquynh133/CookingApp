@@ -9,6 +9,6 @@ import com.finalexam.cookingapp.R;
 public class AddedCake extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_addcake);
+       setContentView(R.layout.activity_addcake);
     }
 }
