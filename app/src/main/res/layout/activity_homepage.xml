@@ -110,65 +110,12 @@
         app:menu="@menu/menu_nav"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="195dp"
-        android:layout_height="133dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="53dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list_food"
+        android:layout_width="411dp"
+        android:layout_height="529dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_recipes"
-        app:srcCompat="@drawable/freshorangecake1" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="187dp"
-        android:fontFamily="@font/poppinssemibold"
-        android:text="Fresh Orange Cake   "
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:fontFamily="@font/poppinssemibold"
-        android:text="120 mins"
-        android:textSize="8sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="197dp"
-        android:fontFamily="@font/poppinssemibold"
-        android:text="4.8"
-        android:textSize="8sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="15dp"
-        android:layout_height="14dp"
-        android:layout_marginStart="34dp"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:srcCompat="@drawable/star" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_recipes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
