@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.finalexam.cookingapp.view.activity.LoginActivity;
+import com.finalexam.cookingapp.view.activity.RegisterActivity;
+
 public class RememberLogin extends AppCompatActivity {
     TextView acc,regis;
     ImageButton people1,people2;
@@ -20,14 +23,15 @@ public class RememberLogin extends AppCompatActivity {
         regis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RememberLogin.this,Register.class));
+                startActivity(new Intent(RememberLogin.this,
+                                         RegisterActivity.class));
             }
         });
         acc = findViewById(R.id.tv_another);
         acc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RememberLogin.this,Login.class));
+                startActivity(new Intent(RememberLogin.this, LoginActivity.class));
             }
         });
         people1 = findViewById(R.id.people1);

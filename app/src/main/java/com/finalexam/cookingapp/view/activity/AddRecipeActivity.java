@@ -106,7 +106,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                     GlobalStorage.self().getRecipeData().getDetailIngredients(),
                     foodName, 0, 0, 0, preparation, null
             );
-            NetworkProvider.self().uploadImage(createFoodRequest);
+            NetworkProvider.self().uploadImage(createFoodRequest, AddRecipeActivity.this);
         });
     }
 

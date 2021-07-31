@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.finalexam.cookingapp.view.activity.LoginActivity;
+import com.finalexam.cookingapp.view.activity.RegisterActivity;
+
 public class Account extends AppCompatActivity {
     ImageButton people1,back;
     EditText pass;
@@ -32,14 +35,14 @@ public class Account extends AppCompatActivity {
         regis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Account.this,Register.class));
+                startActivity(new Intent(Account.this, RegisterActivity.class));
             }
         });
         acc = findViewById(R.id.tv_another);
         acc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Account.this,Login.class));
+                startActivity(new Intent(Account.this, LoginActivity.class));
             }
         });
         people1 = findViewById(R.id.people1);
