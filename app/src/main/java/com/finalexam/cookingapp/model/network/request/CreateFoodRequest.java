@@ -1,4 +1,4 @@
-package com.finalexam.cookingapp.model.request;
+package com.finalexam.cookingapp.model.network.request;
 
 import com.finalexam.cookingapp.model.global.storage.DetailIngredient;
 import com.google.gson.annotations.SerializedName;

@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
 import com.finalexam.cookingapp.model.entity.User;
+import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 
 public class MainActivity extends AppCompatActivity {
     Button login,register;
@@ -22,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
         User user = databaseHandler.getCurrentAccount();
         if (user != null)
-            startActivity(new Intent(MainActivity.this, HomeActivity.class));
+            // Get list foods and move to home
+            NetworkProvider.self().getAllFoods(MainActivity.this);
 
         setContentView(R.layout.activity_main);
         login = findViewById(R.id.btn_login);

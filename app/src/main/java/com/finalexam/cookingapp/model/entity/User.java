@@ -1,6 +1,6 @@
 package com.finalexam.cookingapp.model.entity;
 
-import com.finalexam.cookingapp.model.response.LoginResponse;
+import com.finalexam.cookingapp.model.network.response.LoginResponse;
 
 public class User {
     private int id;

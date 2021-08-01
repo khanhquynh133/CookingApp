@@ -27,17 +27,33 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     @NonNull
     @Override
-    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category, parent, false);
+    public CategoryViewHolder onCreateViewHolder(
+            @NonNull ViewGroup parent,
+            int viewType
+    ) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(
+                R.layout.item_category,
+                parent,
+                false
+        );
         return new CategoryViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryAdapter.CategoryViewHolder holder, int position) {
+    public void onBindViewHolder(
+            @NonNull CategoryAdapter.CategoryViewHolder holder,
+            int position
+    ) {
         Category category = categories.get(position);
         if (category == null) return;
 
-        int image = holder.itemView.getResources().getIdentifier(category.getImageID(), "drawable", holder.itemView.getContext().getPackageName());
+        System.out.println(category.getImageID());
+        int image = holder.itemView.getResources().getIdentifier(
+                category.getImageID(),
+                "drawable",
+                holder.itemView.getContext().getPackageName()
+        );
+        System.out.println(image);
         holder.ibLogo.setImageResource(image);
         holder.tvCategoryName.setText(category.getCategoryName());
         holder.categoryName = category.getCategoryName();
@@ -68,7 +84,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             ibAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), AddRecipeActivity.class);
+                    Intent intent = new Intent(
+                            v.getContext(),
+                            AddRecipeActivity.class
+                    );
                     intent.putExtra("categoryName", categoryName);
                     intent.putExtra("categoryID", categoryID);
                     v.getContext().startActivity(intent);

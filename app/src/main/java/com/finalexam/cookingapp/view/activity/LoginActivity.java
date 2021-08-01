@@ -28,7 +28,10 @@ public class LoginActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                startActivity(new Intent(
+                        LoginActivity.this,
+                        RegisterActivity.class
+                ));
             }
         });
         login = findViewById(R.id.btn_loginL);
@@ -39,8 +42,11 @@ public class LoginActivity extends AppCompatActivity {
                 email = findViewById(R.id.etemailL);
                 password = findViewById(R.id.etpassL);
 
-                NetworkProvider.self().login(email.getText().toString(), password.getText().toString(), LoginActivity.this);
-//                startActivity(new Intent(Login.this,HomePage.class));
+                NetworkProvider.self().login(
+                        email.getText().toString(),
+                        password.getText().toString(),
+                        LoginActivity.this
+                );
             }
         });
     }

@@ -1,23 +1,36 @@
 package com.finalexam.cookingapp.database;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.finalexam.cookingapp.model.entity.Category;
+import com.finalexam.cookingapp.model.entity.Food;
 import com.finalexam.cookingapp.model.entity.Ingredient;
 import com.finalexam.cookingapp.model.entity.User;
+import com.finalexam.cookingapp.view.activity.HomeActivity;
+import com.finalexam.cookingapp.view.activity.MainActivity;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-
+    private static List<TableInfo> tables;
     private static final String DATABASE_NAME = "mobile";
     private static final int DATABASE_VERSION = 3;
+
+    private static final String INTEGER_TYPE = "INTEGER";
+    private static final String TEXT_TYPE = "TEXT";
+
 
     private static final String USER_TABLE_NAME = "user";
     private static final String USER_COLUMN_ID = "id";
@@ -34,29 +47,81 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String INGREDIENT_COLUMN_ID = "id";
     private static final String INGREDIENT_COLUMN_NAME = "name";
 
+    private static final String FOOD_TABLE_NAME = "food";
+    private static final String FOOD_COLUMN_ID = "id";
+    private static final String FOOD_COLUMN_NAME = "name";
+    private static final String FOOD_COLUMN_PREPARE = "prepare";
+    private static final String FOOD_COLUMN_COVER_IMAGE_ID = "cover_image_id";
+
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        String createUserTableCommand = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT, %s INTEGER)", USER_TABLE_NAME, USER_COLUMN_ID, USER_COLUMN_FULL_NAME, USER_COLUMN_EMAIL, USER_COLUMN_CURRENT_ACCOUNT);
-        String createCategoryTableCommand = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT)", CATEGORY_TABLE_NAME, CATEGORY_COLUMN_ID, CATEGORY_COLUMN_IMAGE_ID, CATEGORY_COLUMN_NAME);
-        String createIngredientTableCommand = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT)", INGREDIENT_TABLE_NAME, INGREDIENT_COLUMN_ID, INGREDIENT_COLUMN_NAME);
+    private void initTables() {
+        tables = new ArrayList<>();
 
-        db.execSQL(createCategoryTableCommand);
-        db.execSQL(createUserTableCommand);
-        db.execSQL(createIngredientTableCommand);
+        Map<String, String> userColumns = new LinkedHashMap<>();
+        userColumns.put(USER_COLUMN_ID, INTEGER_TYPE);
+        userColumns.put(USER_COLUMN_FULL_NAME, TEXT_TYPE);
+        userColumns.put(USER_COLUMN_EMAIL, TEXT_TYPE);
+        userColumns.put(USER_COLUMN_CURRENT_ACCOUNT, INTEGER_TYPE);
+        tables.add(new TableInfo(USER_TABLE_NAME, userColumns));
+
+        Map<String, String> categoryColumns = new LinkedHashMap<>();
+        categoryColumns.put(CATEGORY_COLUMN_ID, INTEGER_TYPE);
+        categoryColumns.put(CATEGORY_COLUMN_IMAGE_ID, TEXT_TYPE);
+        categoryColumns.put(CATEGORY_COLUMN_NAME, TEXT_TYPE);
+        tables.add(new TableInfo(CATEGORY_TABLE_NAME, categoryColumns));
+
+        Map<String, String> ingredientColumns = new LinkedHashMap<>();
+        ingredientColumns.put(INGREDIENT_COLUMN_ID, INTEGER_TYPE);
+        ingredientColumns.put(INGREDIENT_COLUMN_NAME, TEXT_TYPE);
+        tables.add(new TableInfo(
+                INGREDIENT_TABLE_NAME,
+                ingredientColumns
+        ));
+
+        Map<String, String> foodColumns = new LinkedHashMap<>();
+        foodColumns.put(FOOD_COLUMN_ID, INTEGER_TYPE);
+        foodColumns.put(FOOD_COLUMN_NAME, TEXT_TYPE);
+        foodColumns.put(FOOD_COLUMN_PREPARE, TEXT_TYPE);
+        foodColumns.put(FOOD_COLUMN_COVER_IMAGE_ID, INTEGER_TYPE);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String dropUserTable = String.format("DROP TABLE IF EXISTS %s", USER_TABLE_NAME);
-        String dropCategoryTable = String.format("DROP TABLE IF EXISTS %s", CATEGORY_TABLE_NAME);
-        String dropIngredientTable = String.format("DROP TABLE IF EXISTS %s", INGREDIENT_TABLE_NAME);
+    public void onCreate(SQLiteDatabase db) {
+        initTables();
+        for (TableInfo tableInfo : tables) {
+            String createTableCommand = "CREATE TABLE " + tableInfo.getTableName() + "(";
 
-        db.execSQL(dropUserTable);
-        db.execSQL(dropCategoryTable);
+            Map<String, String> columns = tableInfo.getColumns();
+            for (Map.Entry<String, String> entry : columns.entrySet()) {
+                String columnName = entry.getKey();
+                String columnType = entry.getValue();
+
+                createTableCommand += columnName + " " + columnType;
+                if (columnName == "id")
+                    createTableCommand += " PRIMARY KEY";
+                createTableCommand += ", ";
+            }
+            createTableCommand = createTableCommand.substring(
+                    0,
+                    createTableCommand.length() - 2
+            ) + ")";
+            db.execSQL(createTableCommand);
+        }
+    }
+
+    @Override
+    public void onUpgrade(
+            SQLiteDatabase db,
+            int oldVersion,
+            int newVersion
+    ) {
+        for (TableInfo tableInfo : tables) {
+            String dropTableCommand = "DROP TABLE IF EXISTS " + tableInfo.getTableName();
+            db.execSQL(dropTableCommand);
+        }
 
         onCreate(db);
     }
@@ -77,12 +142,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         try {
-            Cursor cursor = db.query(USER_TABLE_NAME, null, USER_COLUMN_CURRENT_ACCOUNT + " = ?", new String[]{String.valueOf(1)}, null, null, null);
+            Cursor cursor = db.query(
+                    USER_TABLE_NAME,
+                    null,
+                    USER_COLUMN_CURRENT_ACCOUNT + " = ?",
+                    new String[]{String.valueOf(1)},
+                    null,
+                    null,
+                    null
+            );
 
             if (cursor != null)
                 cursor.moveToFirst();
 
-            User user = new User(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3));
+            User user = new User(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getInt(3)
+            );
             return user;
         } catch (CursorIndexOutOfBoundsException ex) {
             return null;
@@ -117,8 +195,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
             if (cursor.moveToFirst()) {
-                while(!cursor.isAfterLast()) {
-                    Category category = new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
+                while (!cursor.isAfterLast()) {
+                    Category category = new Category(
+                            cursor.getInt(0),
+                            cursor.getString(1),
+                            cursor.getString(2)
+                    );
                     categories.add(category);
 
                     cursor.moveToNext();
@@ -136,12 +218,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         try {
-            Cursor cursor = db.query(CATEGORY_TABLE_NAME, null, CATEGORY_COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
+            Cursor cursor = db.query(
+                    CATEGORY_TABLE_NAME,
+                    null,
+                    CATEGORY_COLUMN_ID + " = ?",
+                    new String[]{String.valueOf(id)},
+                    null,
+                    null,
+                    null
+            );
 
             if (cursor != null)
                 cursor.moveToFirst();
 
-            Category category = new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
+            Category category = new Category(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2)
+            );
             return category;
         } catch (CursorIndexOutOfBoundsException ex) {
             return null;
@@ -168,8 +262,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
             if (cursor.moveToFirst()) {
-                while(!cursor.isAfterLast()) {
-                    Ingredient ingredient = new Ingredient(cursor.getInt(0), cursor.getString(1));
+                while (!cursor.isAfterLast()) {
+                    Ingredient ingredient = new Ingredient(
+                            cursor.getInt(0),
+                            cursor.getString(1)
+                    );
                     ingredients.add(ingredient);
 
                     cursor.moveToNext();
@@ -187,15 +284,97 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         try {
-            Cursor cursor = db.query(INGREDIENT_TABLE_NAME, null, INGREDIENT_COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
+            Cursor cursor = db.query(
+                    INGREDIENT_TABLE_NAME,
+                    null,
+                    INGREDIENT_COLUMN_ID + " = ?",
+                    new String[]{String.valueOf(id)},
+                    null,
+                    null,
+                    null
+            );
 
             if (cursor != null)
                 cursor.moveToFirst();
 
-            Ingredient ingredient = new Ingredient(cursor.getInt(0), cursor.getString(1));
+            Ingredient ingredient = new Ingredient(
+                    cursor.getInt(0),
+                    cursor.getString(1)
+            );
             return ingredient;
         } catch (CursorIndexOutOfBoundsException ex) {
             return null;
         }
+    }
+
+    public void addFood(Food food) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(FOOD_COLUMN_ID, food.getId());
+        values.put(FOOD_COLUMN_NAME, food.getName());
+        values.put(FOOD_COLUMN_PREPARE, food.getPrepare());
+        values.put(FOOD_COLUMN_COVER_IMAGE_ID, food.getImageID());
+
+        db.insert(FOOD_TABLE_NAME, null, values);
+    }
+
+    public Food getFood(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        try {
+            Cursor cursor = db.query(
+                    FOOD_TABLE_NAME,
+                    null,
+                    FOOD_COLUMN_ID + " = ?",
+                    new String[]{String.valueOf(id)},
+                    null,
+                    null,
+                    null
+            );
+
+            if (cursor != null)
+                cursor.moveToFirst();
+
+            Food food = new Food(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getInt(2)
+            );
+            return food;
+        } catch (CursorIndexOutOfBoundsException ex) {
+            return null;
+        }
+    }
+
+    public List<Food> getAllFoods() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        List<Food> foods = new ArrayList<>();
+        try {
+            String getAllFoodsCommand = "SELECT * FROM " + FOOD_TABLE_NAME;
+            Cursor cursor = db.rawQuery(getAllFoodsCommand, null);
+
+
+            if (cursor.moveToFirst()) {
+                while (!cursor.isAfterLast()) {
+                    Food food = new Food(
+                            cursor.getInt(0),
+                            cursor.getString(1),
+                            cursor.getString(2),
+                            cursor.getInt(2)
+                    );
+                    foods.add(food);
+
+                    cursor.moveToNext();
+                }
+            }
+
+            return foods;
+
+        } catch (CursorIndexOutOfBoundsException ex) {
+        }
+        return foods;
     }
 }

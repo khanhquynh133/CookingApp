@@ -7,20 +7,28 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.database.DatabaseHandler;
+import com.finalexam.cookingapp.model.entity.Food;
 import com.finalexam.cookingapp.model.entity.User;
 import com.finalexam.cookingapp.view.Cake;
 import com.finalexam.cookingapp.view.Drink;
-import com.finalexam.cookingapp.view.Food;
+import com.finalexam.cookingapp.view.FoodActivity;
 import com.finalexam.cookingapp.view.Infor;
 import com.finalexam.cookingapp.view.menu.Nav;
+import com.finalexam.cookingapp.viewmodel.FoodAdapter;
+import com.finalexam.cookingapp.viewmodel.NetworkProvider;
+
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     ImageButton cake,food,drink,cakeFOC,drinkPT,ava;
     TextView tvHello;
     DatabaseHandler databaseHandler;
+    RecyclerView rvListFood;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +65,23 @@ public class HomeActivity extends AppCompatActivity {
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, Food.class));
+                startActivity(new Intent(HomeActivity.this, FoodActivity.class));
             }
         });
+
         Nav nav = new Nav(HomeActivity.this);
+
+        DatabaseHandler databaseHandler = new DatabaseHandler(HomeActivity.this);
+        List<Food> foods = databaseHandler.getAllFoods();
+
+        rvListFood = findViewById(R.id.rv_list_food);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
+
+        rvListFood.setLayoutManager(gridLayoutManager);
+
+        FoodAdapter foodAdapter = new FoodAdapter(foods);
+        rvListFood.setAdapter(foodAdapter);
     }
 }

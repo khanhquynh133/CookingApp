@@ -1,15 +1,14 @@
-package com.finalexam.cookingapp;
+package com.finalexam.cookingapp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.view.activity.LoginActivity;
 import com.finalexam.cookingapp.view.activity.RegisterActivity;
 
@@ -38,7 +37,7 @@ public class RememberLogin extends AppCompatActivity {
         people1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RememberLogin.this,Account.class));
+                startActivity(new Intent(RememberLogin.this, Account.class));
                 overridePendingTransition(R.anim.slideinleft,R.anim.slideoutleft);
             }
         });
@@ -46,7 +45,7 @@ public class RememberLogin extends AppCompatActivity {
         people2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RememberLogin.this,HomePage.class));
+//                startActivity(new Intent(RememberLogin.this,HomePage.class));
             }
         });
     }

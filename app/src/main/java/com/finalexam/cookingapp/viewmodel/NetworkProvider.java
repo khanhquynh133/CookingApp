@@ -8,16 +8,17 @@ import android.widget.Toast;
 import com.finalexam.cookingapp.GlobalStorage;
 import com.finalexam.cookingapp.database.DatabaseHandler;
 import com.finalexam.cookingapp.model.entity.Category;
+import com.finalexam.cookingapp.model.entity.Food;
 import com.finalexam.cookingapp.model.entity.Ingredient;
 import com.finalexam.cookingapp.model.entity.User;
-import com.finalexam.cookingapp.model.request.CreateFoodRequest;
-import com.finalexam.cookingapp.model.response.CreateFoodResponse;
-import com.finalexam.cookingapp.model.response.UploadImageResponse;
+import com.finalexam.cookingapp.model.network.request.CreateFoodRequest;
+import com.finalexam.cookingapp.model.network.response.CreateFoodResponse;
+import com.finalexam.cookingapp.model.network.response.UploadImageResponse;
 import com.finalexam.cookingapp.view.activity.AddActivity;
 import com.finalexam.cookingapp.view.activity.HomeActivity;
-import com.finalexam.cookingapp.model.response.LoginResponse;
-import com.finalexam.cookingapp.model.request.SignUpRequest;
-import com.finalexam.cookingapp.model.response.SignUpResponse;
+import com.finalexam.cookingapp.model.network.response.LoginResponse;
+import com.finalexam.cookingapp.model.network.request.SignUpRequest;
+import com.finalexam.cookingapp.model.network.response.SignUpResponse;
 import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
@@ -78,7 +79,11 @@ public final class NetworkProvider {
     }
 
     public void signUp(String full_name, String email, String password) {
-        retrofit.create(APIService.class).signUp(new SignUpRequest(full_name, email, password)).enqueue(new Callback<SignUpResponse>() {
+        retrofit.create(APIService.class).signUp(new SignUpRequest(
+                full_name,
+                email,
+                password
+        )).enqueue(new Callback<SignUpResponse>() {
             @Override
             public void onResponse(
                     Call<SignUpResponse> call,
@@ -97,32 +102,41 @@ public final class NetworkProvider {
     public void login(
             String email, String password, Activity loginActivity
     ) {
-        retrofit.create(APIService.class).login(email, password).enqueue(new Callback<LoginResponse>() {
-            @Override
-            public void onResponse(
-                    Call<LoginResponse> call,
-                    Response<LoginResponse> response
-            ) {
-                if (response.isSuccessful()) {
-                    DatabaseHandler databaseHandler = new DatabaseHandler(loginActivity.getApplicationContext());
+        retrofit.create(APIService.class).login(email, password).enqueue(
+                new Callback<LoginResponse>() {
+                    @Override
+                    public void onResponse(
+                            Call<LoginResponse> call,
+                            Response<LoginResponse> response
+                    ) {
+                        if (response.isSuccessful()) {
+                            DatabaseHandler databaseHandler = new DatabaseHandler(
+                                    loginActivity.getApplicationContext());
 
-                    User user = new User(response.body());
-                    user.setCurrentAccount(1);
-                    databaseHandler.addUser(user);
+                            User user = new User(response.body());
+                            user.setCurrentAccount(1);
+                            databaseHandler.addUser(user);
 
-                    loginActivity.startActivity(new Intent(loginActivity, HomeActivity.class));
-                } else {
-                    String errorMessage = getErrorMessage(response.errorBody());
-                    System.out.println(errorMessage);
-                    Toast.makeText(loginActivity.getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
-                }
-            }
+                            getAllFoods(loginActivity);
+                        } else {
+                            String errorMessage = getErrorMessage(response.errorBody());
+                            System.out.println(errorMessage);
+                            Toast.makeText(
+                                    loginActivity.getApplicationContext(),
+                                    errorMessage,
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        }
+                    }
 
-            @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
+                    @Override
+                    public void onFailure(
+                            Call<LoginResponse> call,
+                            Throwable t
+                    ) {
+                        t.printStackTrace();
+                    }
+                });
     }
 
     public void getAllCategories(Activity activity) {
@@ -133,7 +147,8 @@ public final class NetworkProvider {
                     Response<List<Category>> response
             ) {
                 List<Category> categories = response.body();
-                DatabaseHandler databaseHandler = new DatabaseHandler(activity.getApplicationContext());
+                DatabaseHandler databaseHandler = new DatabaseHandler(
+                        activity.getApplicationContext());
 
                 for (Category category : categories) {
                     if (databaseHandler.getCategory(category.getId()) != null)
@@ -141,7 +156,10 @@ public final class NetworkProvider {
                     databaseHandler.addCategory(category);
                 }
 
-                activity.startActivity(new Intent(activity.getApplicationContext(), AddActivity.class));
+                activity.startActivity(new Intent(
+                        activity.getApplicationContext(),
+                        AddActivity.class
+                ));
                 activity.overridePendingTransition(0, 0);
             }
 
@@ -160,7 +178,8 @@ public final class NetworkProvider {
                     Response<List<Ingredient>> response
             ) {
                 List<Ingredient> ingredients = response.body();
-                DatabaseHandler databaseHandler = new DatabaseHandler(context);
+                DatabaseHandler databaseHandler = new DatabaseHandler(
+                        context);
 
                 for (Ingredient ingredient : ingredients) {
                     if (databaseHandler.getIngredient(ingredient.getId()) != null)
@@ -178,30 +197,42 @@ public final class NetworkProvider {
         });
     }
 
-    public void uploadImage(CreateFoodRequest request, Activity addRecipeActivity) {
+    public void uploadImage(
+            CreateFoodRequest request,
+            Activity addRecipeActivity
+    ) {
         String imageUrl = GlobalStorage.self().getRecipeData().getCoverImageUrl();
         File file = new File(imageUrl);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-        MultipartBody.Part multipartBody = MultipartBody.Part.createFormData("image", file.getName(), requestBody);
-        retrofit.create(APIService.class).uploadImage(multipartBody).enqueue(new Callback<UploadImageResponse>() {
-            @Override
-            public void onResponse(
-                    Call<UploadImageResponse> call,
-                    Response<UploadImageResponse> response
-            ) {
-                System.out.println(response.body().getId());
-                request.setCoverImageID(response.body().getId());
-                createFood(request);
-                addRecipeActivity.startActivity(new Intent(addRecipeActivity, HomeActivity.class));
-            }
+        RequestBody requestBody = RequestBody.create(MediaType.parse(
+                "multipart/form-data"), file);
+        MultipartBody.Part multipartBody = MultipartBody.Part.createFormData(
+                "image",
+                file.getName(),
+                requestBody
+        );
+        retrofit.create(APIService.class).uploadImage(multipartBody).enqueue(
+                new Callback<UploadImageResponse>() {
+                    @Override
+                    public void onResponse(
+                            Call<UploadImageResponse> call,
+                            Response<UploadImageResponse> response
+                    ) {
+                        System.out.println(response.body().getId());
+                        request.setCoverImageID(response.body().getId());
+                        createFood(request);
+                        addRecipeActivity.startActivity(new Intent(
+                                addRecipeActivity,
+                                HomeActivity.class
+                        ));
+                    }
 
-            @Override
-            public void onFailure(
-                    Call<UploadImageResponse> call, Throwable t
-            ) {
+                    @Override
+                    public void onFailure(
+                            Call<UploadImageResponse> call, Throwable t
+                    ) {
 
-            }
-        });
+                    }
+                });
     }
 
     public void createFood(CreateFoodRequest request) {
@@ -219,5 +250,39 @@ public final class NetworkProvider {
 
             }
         });
+    }
+
+    public void getAllFoods(Activity activity) {
+        retrofit.create(APIService.class).getAllFoods().enqueue(
+                new Callback<List<Food>>() {
+                    @Override public void onResponse(
+                            Call<List<Food>> call,
+                            Response<List<Food>> response
+                    ) {
+                        List<Food> foods = response.body();
+
+                        DatabaseHandler databaseHandler = new DatabaseHandler(
+                                activity.getApplicationContext());
+                        for (Food food : foods) {
+                            System.out.println(food.getName());
+                            System.out.println(food.getImageID());
+                            if (databaseHandler.getFood(food.getId()) != null)
+                                continue;
+
+                            databaseHandler.addFood(food);
+                        }
+
+                        activity.startActivity(new Intent(
+                                activity,
+                                HomeActivity.class
+                        ));
+                    }
+
+                    @Override public void onFailure(
+                            Call<List<Food>> call, Throwable t
+                    ) {
+
+                    }
+                });
     }
 }

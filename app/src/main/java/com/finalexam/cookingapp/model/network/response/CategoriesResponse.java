@@ -1,4 +1,4 @@
-package com.finalexam.cookingapp.model.response;
+package com.finalexam.cookingapp.model.network.response;
 
 import com.finalexam.cookingapp.model.entity.Category;
 

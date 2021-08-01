@@ -1,4 +1,4 @@
-package com.finalexam.cookingapp.model;
+package com.finalexam.cookingapp.model.network;
 
 public class APIError {
     private String message;

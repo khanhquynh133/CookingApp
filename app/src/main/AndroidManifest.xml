@@ -33,7 +33,7 @@
         <activity android:name=".view.activity.AddActivity"/>
         <activity android:name=".view.Cake"/>
         <activity android:name=".view.Drink"/>
-        <activity android:name=".view.Food"/>
+        <activity android:name=".view.FoodActivity"/>
         <activity android:name=".view.FreshOrangeCake"/>
         <activity android:name=".view.PeachTea"/>
         <activity android:name=".view.Spaghetti"/>

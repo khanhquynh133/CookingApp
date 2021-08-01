@@ -1,13 +1,14 @@
 package com.finalexam.cookingapp.viewmodel;
 
 import com.finalexam.cookingapp.model.entity.Category;
+import com.finalexam.cookingapp.model.entity.Food;
 import com.finalexam.cookingapp.model.entity.Ingredient;
-import com.finalexam.cookingapp.model.request.CreateFoodRequest;
-import com.finalexam.cookingapp.model.response.CreateFoodResponse;
-import com.finalexam.cookingapp.model.response.LoginResponse;
-import com.finalexam.cookingapp.model.request.SignUpRequest;
-import com.finalexam.cookingapp.model.response.SignUpResponse;
-import com.finalexam.cookingapp.model.response.UploadImageResponse;
+import com.finalexam.cookingapp.model.network.request.CreateFoodRequest;
+import com.finalexam.cookingapp.model.network.response.CreateFoodResponse;
+import com.finalexam.cookingapp.model.network.response.LoginResponse;
+import com.finalexam.cookingapp.model.network.request.SignUpRequest;
+import com.finalexam.cookingapp.model.network.response.SignUpResponse;
+import com.finalexam.cookingapp.model.network.response.UploadImageResponse;
 
 import java.util.List;
 
@@ -41,4 +42,7 @@ public interface APIService {
 
     @POST(prefixUrl + "food")
     Call<CreateFoodResponse> createFood(@Body CreateFoodRequest request);
+
+    @GET(prefixUrl + "food")
+    Call<List<Food>> getAllFoods();
 }

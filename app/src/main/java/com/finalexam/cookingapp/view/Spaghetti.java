@@ -18,7 +18,7 @@ public class Spaghetti extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Spaghetti.this,Food.class));
+                startActivity(new Intent(Spaghetti.this, FoodActivity.class));
             }
         });
     }

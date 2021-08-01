@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,18 +20,13 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.finalexam.cookingapp.GlobalStorage;
 import com.finalexam.cookingapp.R;
-import com.finalexam.cookingapp.model.global.storage.DetailIngredient;
-import com.finalexam.cookingapp.model.request.CreateFoodRequest;
+import com.finalexam.cookingapp.model.network.request.CreateFoodRequest;
 import com.finalexam.cookingapp.utils.RealPathUtil;
-import com.finalexam.cookingapp.view.Added;
 import com.finalexam.cookingapp.viewmodel.NetworkProvider;
 import com.finalexam.cookingapp.viewmodel.ViewPagerAdapter;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AddRecipeActivity extends AppCompatActivity {
     private final static int REQUEST_CODE = 10;

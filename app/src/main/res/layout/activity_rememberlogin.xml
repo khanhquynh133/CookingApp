@@ -83,12 +83,14 @@
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:orientation="vertical">
+
                 <ImageButton
                     android:id="@+id/people1"
                     android:layout_width="250dp"
                     android:layout_height="250dp"
-                    app:layout_constraintEnd_toStartOf="@+id/people2"
-                    android:background="@drawable/k"></ImageButton>
+                    android:background="@drawable/k"
+                    app:layout_constraintEnd_toStartOf="@+id/people2"></ImageButton>
+
                 <TextView
                     android:id="@+id/tv_hello"
                     android:layout_width="wrap_content"

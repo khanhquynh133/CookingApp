@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.finalexam.cookingapp.R;
 import com.finalexam.cookingapp.view.activity.HomeActivity;
 
-public class Food extends AppCompatActivity {
+public class FoodActivity extends AppCompatActivity {
     ImageButton food,back;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,14 +19,14 @@ public class Food extends AppCompatActivity {
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Food.this,Spaghetti.class));
+                startActivity(new Intent(FoodActivity.this, Spaghetti.class));
             }
         });
         back = findViewById(R.id.btn_backF);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Food.this, HomeActivity.class));
+                startActivity(new Intent(FoodActivity.this, HomeActivity.class));
             }
         });
     }
